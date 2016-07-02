@@ -12,8 +12,8 @@ using System.Text;
 using Orleans;
 using Orleans.Concurrency;
 using Orleans.Runtime;
-using GF.Common;
-using GF.Server;
+using GF.Unity.Common;
+using GF.Orleans;
 using GF.UCenter.Common;
 using GF.UCenter.SDK.AppServer;
 

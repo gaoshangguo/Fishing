@@ -4,8 +4,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Orleans;
-using GF.Common;
-using GF.Server;
+using GF.Unity.Common;
 using Ps;
 
 public class ClientInfo
@@ -36,9 +35,9 @@ public class BaseApp<TDef> : Component<TDef> where TDef : DefApp, new()
         MapClientInfoLock = new object();
         RpcLock = new object();
 
-        var co_supersocket = EsEngine.Instance.CoSuperSocket;
-        co_supersocket.OnSessionCreate += _onSuperSocketSessionCreate;
-        co_supersocket.OnSessionDestroy += _onSuperSocketSessionDestroy;
+        //var co_supersocket = EsEngine.Instance.CoSuperSocket;
+        //co_supersocket.OnSessionCreate += _onSuperSocketSessionCreate;
+        //co_supersocket.OnSessionDestroy += _onSuperSocketSessionDestroy;
 
         EtLogin = EntityMgr.Instance.genEntity<EtLogin>(cache_data);
         EtPlayer = EntityMgr.Instance.genEntity<EtPlayer>(cache_data);
@@ -121,7 +120,7 @@ public class BaseApp<TDef> : Component<TDef> where TDef : DefApp, new()
     }
 
     //-------------------------------------------------------------------------
-    async void _onSuperSocketSessionDestroy(IRpcSession s, SessionCloseReason reason)
+    async void _onSuperSocketSessionDestroy(IRpcSession s)//, SessionCloseReason reason)
     {
         ClientInfo client_info = getClientInfoThenRemove(s);
         if (client_info == null) return;

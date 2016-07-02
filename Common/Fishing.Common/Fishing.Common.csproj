@@ -38,17 +38,35 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GF.Common">
-      <HintPath>..\..\ShareLib\GF.Core\GF.Common.dll</HintPath>
+    <Reference Include="GF.Unity.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.002\lib\net461\GF.Unity.Common.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="GF.Sqlite">
-      <HintPath>..\..\ShareLib\GF.Core\GF.Sqlite.dll</HintPath>
+    <Reference Include="GF.Unity.Sqlite, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.002\lib\net461\GF.Unity.Sqlite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\Server\packages\ICSharpCode.SharpZipLib.dll.0.85.4.369\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\Server\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Pngcs, Version=1.1.4.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.002\lib\net461\Pngcs.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.002\lib\net461\UnityEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FishScene\BaseEntity.cs" />
@@ -204,7 +222,10 @@
     <Compile Include="ToolTips\ToolTipEnd.cs" />
     <Compile Include="ToolTips\ToolTipHelper.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy   /D /F /I /R /Y /K /S /E    ..\..\..\Common\Fishing.Common    ..\..\..\Client\Assets\Plugins\Fishing.Common

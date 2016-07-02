@@ -4,8 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Orleans;
 using Orleans.Streams;
-using GF.Common;
-using GF.Server;
+using GF.Unity.Common;
+using GF.Orleans;
 using Ps;
 
 internal class CellPlayerFriendConsumerObserver<StreamData> : IAsyncObserver<Ps.StreamData>

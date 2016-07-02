@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 using System.Text;
 using Orleans;
 using Orleans.Concurrency;
-using Couchbase;
-using Couchbase.Core;
 using Orleans.Runtime;
-using Couchbase.N1QL;
-using GF.Common;
+using GF.Unity.Common;
 
 namespace Ps
 {
-    public class QueryDesktopPlayer : Document<QueryDesktopPlayer>
+    public class QueryDesktopPlayer
     {
         public byte seat_index { get; set; }
         public string player_etguid { get; set; }
@@ -23,7 +20,7 @@ namespace Ps
         public int chip { get; set; }
     }
 
-    public class QueryDesktop : Document<QueryDesktop>
+    public class QueryDesktop
     {
         public string desktop_etguid { get; set; }
         public int seat_num { get; set; }
@@ -55,51 +52,9 @@ namespace Ps
             , "list_seat_player"
             , "seat_player_num"
             , "all_player_num");
-
-            IQueryRequest query_request = QueryRequest.Create(query)
-                   .ScanConsistency(ScanConsistency.RequestPlus)
-                   .AddPositionalParameter(desktop_search_filter.seat_num)
-                   .AddPositionalParameter(desktop_search_filter.is_vip)
-                   .AddPositionalParameter(desktop_search_filter.desktop_tableid);
-
-            var result = await DbClientCouchbase.Instance.Bucket.QueryAsync<QueryDesktop>(query_request);
-
+            
             List<DesktopInfo> list_desktop = new List<DesktopInfo>();
-            if (result.Success)
-            {
-                // 对结果集进行处理
-                foreach (var i in result.Rows)
-                {
-                    QueryDesktop query_desktop = i;
-                    if (string.IsNullOrEmpty(query_desktop.desktop_etguid)) continue;
-
-                    DesktopInfo desktop_info = new DesktopInfo();
-                    desktop_info.desktop_etguid = query_desktop.desktop_etguid;
-                    desktop_info.seat_num = query_desktop.seat_num;
-                    desktop_info.is_vip = desktop_search_filter.is_vip;
-                    desktop_info.desktop_tableid = desktop_search_filter.desktop_tableid;
-                    desktop_info.seat_player_num = query_desktop.seat_player_num;
-                    desktop_info.all_player_num = query_desktop.all_player_num;
-                    desktop_info.list_seat_player = new List<DesktopPlayerInfo>();
-
-                    if (query_desktop.list_seat_player != null)
-                    {
-                        foreach (var j in query_desktop.list_seat_player)
-                        {
-                            DesktopPlayerInfo info = new DesktopPlayerInfo();
-                            info.seat_index = j.seat_index;
-                            info.player_etguid = j.player_etguid;
-                            info.nick_name = j.nick_name;
-                            info.icon = j.icon;
-                            info.chip = j.chip;
-                            desktop_info.list_seat_player.Add(info);
-                        }
-                    }
-
-                    list_desktop.Add(desktop_info);
-                }
-            }
-
+            
             // Couchbase中没有找到桌子，则创建一批符合条件的桌子
             if (list_desktop.Count < 10)
             {
@@ -143,7 +98,7 @@ namespace Ps
 
             // 首先查询桌子是否存在
             string key = "CacheDesktopData_" + desktop_etguid;
-            bool exists = await DbClientCouchbase.Instance.asyncExists(key);
+            bool exists = false;
             if (!exists)
             {
                 goto End;

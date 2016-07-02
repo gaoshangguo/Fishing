@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Orleans;
 using Orleans.Providers;
 using Orleans.Streams;
-using GF.Common;
-using GF.Server;
+using GF.Unity.Common;
+using GF.Orleans;
 using Ps;
 
 internal class CellPlayerDesktopConsumerObserver<StreamData> : IAsyncObserver<Ps.StreamData>

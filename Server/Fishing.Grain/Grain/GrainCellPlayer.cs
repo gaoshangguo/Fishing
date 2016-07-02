@@ -11,7 +11,7 @@ using Orleans.Concurrency;
 using Orleans.Providers;
 using Orleans.Runtime;
 using Orleans.Streams;
-using GF.Common;
+using GF.Unity.Common;
 
 namespace Ps
 {
@@ -21,7 +21,6 @@ namespace Ps
     public class GrainCellPlayer : Grain<EntityData>, ICellPlayer
     {
         //---------------------------------------------------------------------
-        public CouchbaseQue CouchbaseQue { get; private set; }
         public Logger Logger { get { return GetLogger(); } }
         public IGrainFactory GF { get { return this.GrainFactory; } }
         public IAsyncStream<StreamData> AsyncStream { get; set; }
@@ -46,11 +45,6 @@ namespace Ps
                 {
                     IStreamProvider stream_provider = GetStreamProvider(StringDef.SMSProvider);
                     AsyncStream = stream_provider.GetStream<StreamData>(this.GetPrimaryKey(), "Friend");
-                }
-
-                if (CouchbaseQue == null)
-                {
-                    CouchbaseQue = new CouchbaseQue("EtPlayer", this.State.entity_guid);
                 }
 
                 EtPlayer = EntityMgr.Instance.genEntity<EtPlayer, GrainCellPlayer>(this.State, this);
@@ -138,11 +132,6 @@ namespace Ps
                     AsyncStream = stream_provider.GetStream<StreamData>(this.GetPrimaryKey(), "Friend");
                 }
 
-                if (CouchbaseQue == null)
-                {
-                    CouchbaseQue = new CouchbaseQue("EtPlayer", new_player_info.et_player_guid);
-                }
-
                 bool exist = true;
                 ulong player_id = 100;
                 //do
@@ -226,26 +215,6 @@ namespace Ps
             if (EtPlayer != null)
             {
                 EtPlayer.update(tm);
-
-                if (CouchbaseQue != null)
-                {
-                    Tm4CouchbaseQue += tm;
-                    if (Tm4CouchbaseQue > 1f)
-                    {
-                        Tm4CouchbaseQue = 0f;
-                        await CouchbaseQue.queryThenCacheAllData();
-                    }
-
-                    if (CouchbaseQue.Count > 0)
-                    {
-                        var que_data = await CouchbaseQue.popData();
-                        if (que_data.type > 0)
-                        {
-                            var co_player = EtPlayer.getComponent<CellPlayer<DefPlayer>>();
-                            await co_player.recvCouchbaseQueData(que_data);
-                        }
-                    }
-                }
             }
         }
 
@@ -256,13 +225,6 @@ namespace Ps
 
             State = EtPlayer.genEntityData4SaveDb();
             WriteStateAsync();
-
-            var co_player = EtPlayer.getComponent<CellPlayer<DefPlayer>>();
-            if (co_player.CachePlayerData.player_server_state != PlayerServerState.Offline)
-            {
-                string data = EbTool.jsonSerialize(co_player.CachePlayerData);
-                DbClientCouchbase.Instance.asyncTouch(co_player.CachePlayerKey, TimeSpan.FromSeconds(15.0));
-            }
 
             return TaskDone.Done;
         }

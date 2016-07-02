@@ -39,7 +39,7 @@ public class ProgramConfig
         file.ExeConfigFilename = config_filename;
         Configuration config = ConfigurationManager.OpenMappedExeConfiguration(file, ConfigurationUserLevel.None);
 
-        ConfigCommon cfg_common = config.SectionGroups["FishingBase"].Sections["Common"] as ConfigCommon;
+        ConfigCommon cfg_common = config.SectionGroups["Fishing.Gateway"].Sections["Common"] as ConfigCommon;
         ListenIp = cfg_common.ListenIp;
         ListenPort = cfg_common.ListenPort;
     }
@@ -52,16 +52,16 @@ public class ProgramConfig
         cfg_common.ListenPort = ListenPort;
 
         ExeConfigurationFileMap file = new ExeConfigurationFileMap();
-        file.ExeConfigFilename = "FishingBase.exe.config";
+        file.ExeConfigFilename = "Fishing.Gateway.exe.config";
         Configuration config = ConfigurationManager.OpenMappedExeConfiguration(file, ConfigurationUserLevel.None);
-        if (config.SectionGroups.Get("FishingBase") == null)
+        if (config.SectionGroups.Get("Fishing.Gateway") == null)
         {
-            config.SectionGroups.Add("FishingBase", new ConfigurationSectionGroup());
+            config.SectionGroups.Add("Fishing.Gateway", new ConfigurationSectionGroup());
         }
 
-        if (config.SectionGroups["FishingBase"].Sections.Get("Common") == null)
+        if (config.SectionGroups["Fishing.Gateway"].Sections.Get("Common") == null)
         {
-            config.SectionGroups["FishingBase"].Sections.Add("Common", cfg_common);
+            config.SectionGroups["Fishing.Gateway"].Sections.Add("Common", cfg_common);
         }
 
         config.Save(ConfigurationSaveMode.Modified);

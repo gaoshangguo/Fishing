@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Orleans;
 using Orleans.Concurrency;
-using GF.Common;
+using GF.Unity.Common;
 using Ps;
 
 // CellActor消息，角色属性集变脏

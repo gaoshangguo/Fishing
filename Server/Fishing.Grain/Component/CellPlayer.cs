@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Orleans;
-using GF.Common;
-using GF.Server;
+using GF.Unity.Common;
+using GF.Orleans;
 using Ps;
 
 class IPAdderssData
@@ -154,7 +154,7 @@ public class CellPlayer<TDef> : Component<TDef> where TDef : DefPlayer, new()
         CachePlayerKey = "CachePlayerData_" + Entity.Guid;
 
         string data = EbTool.jsonSerialize(CachePlayerData);
-        DbClientCouchbase.Instance.asyncSave(CachePlayerKey, data, TimeSpan.FromSeconds(15.0));
+        //DbClientCouchbase.Instance.asyncSave(CachePlayerKey, data, TimeSpan.FromSeconds(15.0));
     }
 
     //-------------------------------------------------------------------------
@@ -170,7 +170,7 @@ public class CellPlayer<TDef> : Component<TDef> where TDef : DefPlayer, new()
         CoPlayerDesktop = null;
         CoPlayerLobby = null;
 
-        DbClientCouchbase.Instance.asyncRemove(CachePlayerKey);
+        //DbClientCouchbase.Instance.asyncRemove(CachePlayerKey);
 
         EbLog.Note("CellPlayer.release() PlayerEtGuid=" + Entity.Guid);
     }
@@ -344,94 +344,8 @@ public class CellPlayer<TDef> : Component<TDef> where TDef : DefPlayer, new()
 
     //-------------------------------------------------------------------------
     // 收到玩家本人Couchbase队列中的消息
-    public async Task recvCouchbaseQueData(CouchbaseQueData que_data)
+    public async Task recvCouchbaseQueData()
     {
-        CouchbaseQueDataType que_data_type = (CouchbaseQueDataType)que_data.type;
-        EbLog.Note("CellPlayer.recvCouchbaseQueData() DataType=" + que_data_type);
-        switch (que_data_type)
-        {
-            case CouchbaseQueDataType.InvitePlayerEnterDesktop:// 收到好友进桌邀请
-                {
-                    string from_friend_etguid = que_data.map_data["from_friend_etguid"];
-                    string desktop_etguid = que_data.map_data["desktop_etguid"];
-                    int sb = int.Parse(que_data.map_data["sb"]);
-                    int bb = int.Parse(que_data.map_data["bb"]);
-                    int player_num = int.Parse(que_data.map_data["player_num"]);
-                    int seat_num = int.Parse(que_data.map_data["seat_num"]);
-
-                    var grain = Entity.getUserData<GrainCellPlayer>();
-                    var grain_playerservice = grain.GF.GetGrain<ICellPlayerService>(0);
-                    var player_info = await grain_playerservice.getPlayerInfo(from_friend_etguid);
-
-                    s2sProxyInvitePlayerEnterDesktop(player_info, desktop_etguid, sb, bb, player_num, seat_num);
-                }
-                break;
-            case CouchbaseQueDataType.GivePlayerChip:// 收到玩家赠送的筹码
-                {
-                    string from_player_etguid = que_data.map_data["from_player_etguid"];
-                    int chip = int.Parse(que_data.map_data["chip"]);
-
-                    var grain = Entity.getUserData<GrainCellPlayer>();
-                    var grain_playerservice = grain.GF.GetGrain<ICellPlayerService>(0);
-                    var player_info = await grain_playerservice.getPlayerInfo(from_player_etguid);
-
-                    s2sProxyGivePlayerChip(player_info, chip);
-                }
-                break;
-            case CouchbaseQueDataType.RequestAddFriend:// 请求加好友
-                {
-                    string request_player_etguid = que_data.map_data["request_player_etguid"];
-
-                    var grain = Entity.getUserData<GrainCellPlayer>();
-                    var grain_playerservice = grain.GF.GetGrain<ICellPlayerService>(0);
-                    var player_info = await grain_playerservice.getPlayerInfo(request_player_etguid);
-
-                    var co_friend = Entity.getComponent<CellPlayerFriend<DefPlayerFriend>>();
-                    co_friend.s2sProxyRequestAddFriend(player_info);
-                }
-                break;
-            case CouchbaseQueDataType.ResponseAddFriend:// 响应加好友
-                {
-                    string response_player_etguid = que_data.map_data["response_player_etguid"];
-                    bool agree = bool.Parse(que_data.map_data["agree"]);
-
-                    var grain = Entity.getUserData<GrainCellPlayer>();
-                    var grain_playerservice = grain.GF.GetGrain<ICellPlayerService>(0);
-                    var player_info = await grain_playerservice.getPlayerInfo(response_player_etguid);
-
-                    var co_friend = Entity.getComponent<CellPlayerFriend<DefPlayerFriend>>();
-                    co_friend.s2sProxyResponseAddFriend(player_info, agree);
-                }
-                break;
-            case CouchbaseQueDataType.DeleteFriend:// 删除好友
-                {
-                    string friend_etguid = que_data.map_data["friend_etguid"];
-
-                    var co_friend = Entity.getComponent<CellPlayerFriend<DefPlayerFriend>>();
-                    co_friend.s2sProxyDeleteFriend(friend_etguid);
-                }
-                break;
-            case CouchbaseQueDataType.RecvChatFromFriend:// 好友聊天
-                {
-                    string s = que_data.map_data["msg_recv"];
-                    ChatMsgRecv msg_recv = EbTool.jsonDeserialize<ChatMsgRecv>(s);
-
-                    var co_chat = Entity.getComponent<CellPlayerChat<DefPlayerChat>>();
-                    co_chat.s2sProxyRecvChatFromFriend(msg_recv);
-                }
-                break;
-            case CouchbaseQueDataType.RecvMail:// 收到邮件
-                {
-                    string s = que_data.map_data["mail_data"];
-                    MailData mail_data = EbTool.jsonDeserialize<MailData>(s);
-
-                    var co_mailbox = Entity.getComponent<CellPlayerMailBox<DefPlayerMailBox>>();
-                    co_mailbox.s2sProxyRecvMail(mail_data);
-                }
-                break;
-            default:
-                break;
-        }
     }
 
     //---------------------------------------------------------------------
@@ -504,7 +418,7 @@ public class CellPlayer<TDef> : Component<TDef> where TDef : DefPlayer, new()
         CachePlayerData.player_server_state = PlayerServerState.Online;
 
         string data = EbTool.jsonSerialize(CachePlayerData);
-        DbClientCouchbase.Instance.asyncSave(CachePlayerKey, data, TimeSpan.FromSeconds(15.0));
+        //DbClientCouchbase.Instance.asyncSave(CachePlayerKey, data, TimeSpan.FromSeconds(15.0));
 
         // 通知PlayerProxy，玩家上线
         var grain = Entity.getUserData<GrainCellPlayer>();
@@ -545,7 +459,7 @@ public class CellPlayer<TDef> : Component<TDef> where TDef : DefPlayer, new()
         grain_playerproxy.s2sPlayerServerStateChange(CachePlayerData.player_server_state);
 
         string data = EbTool.jsonSerialize(CachePlayerData);
-        DbClientCouchbase.Instance.asyncSave(CachePlayerKey, data, TimeSpan.FromSeconds(15.0));
+        //DbClientCouchbase.Instance.asyncSave(CachePlayerKey, data, TimeSpan.FromSeconds(15.0));
 
         await CoPlayerDesktop.leaveDesktop();
     }

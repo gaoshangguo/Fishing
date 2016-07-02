@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Orleans;
-using GF.Common;
-using GF.Server;
+using GF.Unity.Common;
+using GF.Orleans;
 using Ps;
 
 public class _tInfoOfDestop
@@ -271,7 +271,7 @@ public class CellDesktop<TDef> : Component<TDef> where TDef : DefDesktop, new()
         }
 
         string data = EbTool.jsonSerialize(DesktopInfo);
-        DbClientCouchbase.Instance.asyncSave(CacheDesktopKey, data, TimeSpan.FromSeconds(15.0));
+        //DbClientCouchbase.Instance.asyncSave(CacheDesktopKey, data, TimeSpan.FromSeconds(15.0));
 
         return TaskDone.Done;
     }
@@ -598,7 +598,7 @@ public class CellDesktop<TDef> : Component<TDef> where TDef : DefDesktop, new()
         }
 
         string data = EbTool.jsonSerialize(DesktopInfo);
-        DbClientCouchbase.Instance.asyncSave(CacheDesktopKey, data, TimeSpan.FromSeconds(15.0));
+        //DbClientCouchbase.Instance.asyncSave(CacheDesktopKey, data, TimeSpan.FromSeconds(15.0));
     }
 
     //-------------------------------------------------------------------------
@@ -618,7 +618,7 @@ public class CellDesktop<TDef> : Component<TDef> where TDef : DefDesktop, new()
     {
         if (Init)
         {
-            DbClientCouchbase.Instance.asyncTouch(CacheDesktopKey, TimeSpan.FromSeconds(15.0));
+            //DbClientCouchbase.Instance.asyncTouch(CacheDesktopKey, TimeSpan.FromSeconds(15.0));
         }
 
         return TaskDone.Done;

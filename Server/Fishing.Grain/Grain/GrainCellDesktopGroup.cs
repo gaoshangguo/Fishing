@@ -10,7 +10,7 @@ using Orleans.Concurrency;
 using Orleans.Runtime;
 using Orleans.Providers;
 using Orleans.Streams;
-using GF.Common;
+using GF.Unity.Common;
 
 namespace Ps
 {

@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Orleans;
-using GF.Common;
-using GF.Server;
+using GF.Unity.Common;
+using GF.Orleans;
 using Ps;
 
 public class CellApp
@@ -19,6 +19,7 @@ public class CellApp
     public CellConfig Cfg { get; private set; }
     public ThreadSafeRandom Rd { get; private set; }
     public JsonConfig jsonCfg { get; private set; }
+
     //-------------------------------------------------------------------------
     public CellApp()
     {

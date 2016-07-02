@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Orleans;
-using GF.Common;
-using GF.Server;
+using GF.Unity.Common;
 using Ps;
 
-class EsEngineListener : IEsEngineListener
+class EsEngineListener// : IEsEngineListener
 {
     //-------------------------------------------------------------------------
     Entity EtApp { get; set; }
@@ -69,24 +68,24 @@ class Program
         ProgramConfig config = new ProgramConfig();
         config.load("./FishingBase.exe.config");
 
-        EsEngineSettings settings;
-        settings.NodeType = 2;
-        settings.NodeTypeString = "Base";
-        settings.ListenIp = config.ListenIp;
-        settings.ListenPort = config.ListenPort;
-        settings.RootEntityType = "EtRoot";
-        settings.EnableCoSupersocket = true;
-        settings.Log4NetConfigPath = "../../../Media/Fishing/Config/FishingBase.log4net.config";
+        //EsEngineSettings settings;
+        //settings.NodeType = 2;
+        //settings.NodeTypeString = "Base";
+        //settings.ListenIp = config.ListenIp;
+        //settings.ListenPort = config.ListenPort;
+        //settings.RootEntityType = "EtRoot";
+        //settings.EnableCoSupersocket = true;
+        //settings.Log4NetConfigPath = "../../../Media/Fishing/Config/FishingBase.log4net.config";
 
-        try
-        {
-            EsEngine e = new EsEngine(ref settings, new EsEngineListener());
-            e.run();
-        }
-        catch (System.Exception ex)
-        {
-            EbLog.Note(ex.ToString());
-        }
+        //try
+        //{
+        //    EsEngine e = new EsEngine(ref settings, new EsEngineListener());
+        //    e.run();
+        //}
+        //catch (System.Exception ex)
+        //{
+        //    EbLog.Note(ex.ToString());
+        //}
 
         GrainClient.Uninitialize();
     }

@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 using System.Text;
 using Orleans;
 using Orleans.Providers;
-using Couchbase;
-using Couchbase.Core;
-using Couchbase.N1QL;
-using GF.Common;
-using GF.Server;
+using GF.Unity.Common;
+using GF.Orleans;
 
 namespace Ps
 {
@@ -19,7 +16,6 @@ namespace Ps
     {
         //---------------------------------------------------------------------
         public string Name { get { return "OrleansBootstrap4Cell"; } }
-        public DbClientCouchbase DbClientCouchbase { get; private set; }
         public EntityMgr EntityMgr { get; private set; }
         public CellApp CellApp { get; private set; }
 
@@ -48,27 +44,7 @@ namespace Ps
             EntityMgr.regEntityDef<EtDesktop>();
             EntityMgr.regEntityDef<EtPlayer>();
             EntityMgr.regEntityDef<EtPlayerMirror>();
-
-            DbClientCouchbase = new DbClientCouchbase();
-            EntityCouchbase et_couchbase = new EntityCouchbase(EntityMgr, DbClientCouchbase.Bucket);
-
-            // 创建视图
-            //var couchbase_mgr = DbClientCouchbase.Instance.Bucket.CreateManager("Cragon", "123321");
-            //var get = couchbase_mgr.GetDesignDocument("dev_team");
-            //if (!get.Success)
-            //{
-            //    var design_doc = File.ReadAllText(@"..\\..\\..\\Media\\Fishing\\CouchbaseView\\dev_team.json");
-            //    var inserted = couchbase_mgr.InsertDesignDocument("dev_team", design_doc);
-            //    if (inserted.Success)
-            //    {
-            //        EbLog.Note("Created 'team' design doc.  Success");
-            //    }
-            //    else
-            //    {
-            //        EbLog.Note("Created 'team' design doc.  Failed, Msg=" + inserted.Message);
-            //    }
-            //}
-
+            
             // 初始化DataMgr
             {
                 string path_media = ServerPath.getPathMediaRoot();

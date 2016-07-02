@@ -34,210 +34,103 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bond">
-      <HintPath>..\..\ShareLib\GF.Core\Bond.dll</HintPath>
+    <Reference Include="GF.Orleans, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GF.Orleans.1.00.000\lib\net461\GF.Orleans.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Bond.Attributes">
-      <HintPath>..\..\ShareLib\GF.Core\Bond.Attributes.dll</HintPath>
+    <Reference Include="GF.Orleans.Storage.MongoDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GF.Orleans.1.00.000\lib\net461\GF.Orleans.Storage.MongoDB.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Bond.IO">
-      <HintPath>..\..\ShareLib\GF.Core\Bond.IO.dll</HintPath>
+    <Reference Include="GF.Unity.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GF.Unity.Common.1.00.001\lib\net461\GF.Unity.Common.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Bond.JSON">
-      <HintPath>..\..\ShareLib\GF.Core\Bond.JSON.dll</HintPath>
+    <Reference Include="GF.Unity.Sqlite, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GF.Unity.Common.1.00.001\lib\net461\GF.Unity.Sqlite.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Common.Logging">
-      <HintPath>..\..\ShareLib\GF.Core\Common.Logging.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\ICSharpCode.SharpZipLib.dll.0.85.4.369\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Common.Logging.Core">
-      <HintPath>..\..\ShareLib\GF.Core\Common.Logging.Core.dll</HintPath>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Consul">
-      <HintPath>..\..\ShareLib\GF.Core\Consul.dll</HintPath>
+    <Reference Include="Microsoft.CodeAnalysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.0\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Couchbase.NetClient">
-      <HintPath>..\..\ShareLib\GF.Core\Couchbase.NetClient.dll</HintPath>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="FluentAssertions">
-      <HintPath>..\..\ShareLib\GF.Core\FluentAssertions.dll</HintPath>
+    <Reference Include="MongoDB.Bson, Version=2.2.4.26, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.2.4\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="FluentAssertions.Core">
-      <HintPath>..\..\ShareLib\GF.Core\FluentAssertions.Core.dll</HintPath>
+    <Reference Include="MongoDB.Driver, Version=2.2.4.26, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.2.4\lib\net45\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="FSharp.Core">
-      <HintPath>..\..\ShareLib\GF.Core\FSharp.Core.dll</HintPath>
+    <Reference Include="MongoDB.Driver.Core, Version=2.2.4.26, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.2.4\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="GF.Common">
-      <HintPath>..\..\ShareLib\GF.Core\GF.Common.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="GF.Server">
-      <HintPath>..\..\ShareLib\GF.Core\GF.Server.dll</HintPath>
+    <Reference Include="Orleans, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Orleans.Core.1.2.2\lib\net451\Orleans.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="GF.Sqlite">
-      <HintPath>..\..\ShareLib\GF.Core\GF.Sqlite.dll</HintPath>
+    <Reference Include="OrleansCodeGenerator, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Orleans.OrleansCodeGenerator.1.2.2\lib\net451\OrleansCodeGenerator.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="GF.UCenter.Common">
-      <HintPath>..\..\ShareLib\GF.UCenter\GF.UCenter.Common.dll</HintPath>
+    <Reference Include="OrleansCounterControl, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Orleans.CounterControl.1.2.2\lib\net451\OrleansCounterControl.exe</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="GF.UCenter.Common.Portable">
-      <HintPath>..\..\ShareLib\GF.UCenter\GF.UCenter.Common.Portable.dll</HintPath>
+    <Reference Include="OrleansDependencyInjection, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Orleans.OrleansRuntime.1.2.2\lib\net451\OrleansDependencyInjection.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="GF.UCenter.SDK.AppServer">
-      <HintPath>..\..\ShareLib\GF.UCenter\GF.UCenter.SDK.AppServer.dll</HintPath>
+    <Reference Include="OrleansHost, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Orleans.OrleansHost.1.2.2\lib\net451\OrleansHost.exe</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Google.Protobuf">
-      <HintPath>..\..\ShareLib\GF.Core\Google.Protobuf.dll</HintPath>
+    <Reference Include="OrleansProviders, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Orleans.OrleansProviders.1.2.2\lib\net451\OrleansProviders.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\ShareLib\GF.Core\ICSharpCode.SharpZipLib.dll</HintPath>
+    <Reference Include="OrleansRuntime, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Orleans.OrleansRuntime.1.2.2\lib\net451\OrleansRuntime.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ApplicationInsights">
-      <HintPath>..\..\ShareLib\GF.Core\Microsoft.ApplicationInsights.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.Core">
-      <HintPath>..\..\ShareLib\GF.Core\Microsoft.Azure.KeyVault.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.SqlDatabase.ElasticScale.Client">
-      <HintPath>..\..\ShareLib\GF.Core\Microsoft.Azure.SqlDatabase.ElasticScale.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ShareLib\Gf\Debug\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ShareLib\Gf\Debug\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ShareLib\Gf\Debug\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection">
-      <HintPath>..\..\ShareLib\GF.Core\Microsoft.Extensions.DependencyInjection.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
-      <HintPath>..\..\ShareLib\GF.Core\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling">
-      <HintPath>..\..\ShareLib\GF.Core\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ServiceBus">
-      <HintPath>..\..\ShareLib\GF.Core\Microsoft.ServiceBus.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ShareLib\GF.Core\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration">
-      <HintPath>..\..\ShareLib\GF.Core\Microsoft.WindowsAzure.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage">
-      <HintPath>..\..\ShareLib\GF.Core\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="NewRelic.Api.Agent">
-      <HintPath>..\..\ShareLib\GF.Core\NewRelic.Api.Agent.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\ShareLib\GF.Core\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Orleans">
-      <HintPath>..\..\ShareLib\GF.Core\Orleans.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansAzureUtils">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansAzureUtils.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansBondUtils">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansBondUtils.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansCodeGenerator">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansCodeGenerator.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansConsulUtils">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansConsulUtils.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansDependencyInjection">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansDependencyInjection.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansEventSourcing">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansEventSourcing.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansGoogleUtils">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansGoogleUtils.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansProviders">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansProviders.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansRuntime">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansRuntime.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansServiceBus">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansServiceBus.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansSQLUtils">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansSQLUtils.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansTelemetryConsumers.AI">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansTelemetryConsumers.AI.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansTelemetryConsumers.NewRelic">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansTelemetryConsumers.NewRelic.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansTestingHost">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansTestingHost.dll</HintPath>
-    </Reference>
-    <Reference Include="OrleansZooKeeperUtils">
-      <HintPath>..\..\ShareLib\GF.Core\OrleansZooKeeperUtils.dll</HintPath>
-    </Reference>
-    <Reference Include="Pngcs">
-      <HintPath>..\..\ShareLib\GF.Core\Pngcs.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.Common">
-      <HintPath>..\..\ShareLib\GF.Core\SuperSocket.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.ProtoBase">
-      <HintPath>..\..\ShareLib\GF.Core\SuperSocket.ProtoBase.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.SocketBase">
-      <HintPath>..\..\ShareLib\GF.Core\SuperSocket.SocketBase.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.SocketEngine">
-      <HintPath>..\..\ShareLib\GF.Core\SuperSocket.SocketEngine.dll</HintPath>
+    <Reference Include="Pngcs, Version=1.1.4.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GF.Unity.Common.1.00.001\lib\net461\Pngcs.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Collections.Immutable, Version=1.1.37.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ShareLib\GF.Core\System.Collections.Immutable.dll</HintPath>
+    <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ShareLib\GF.UCenter\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ShareLib\Gf\Debug\System.Spatial.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.24.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ShareLib\Gf\Debug\System.Threading.Tasks.Dataflow.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ShareLib\GF.UCenter\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Reflection.Metadata, Version=1.0.21.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.1.0.21\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\ShareLib\GF.Core\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="Validation">
-      <HintPath>..\..\ShareLib\GF.Core\Validation.dll</HintPath>
-    </Reference>
-    <Reference Include="ZooKeeperNetEx">
-      <HintPath>..\..\ShareLib\GF.Core\ZooKeeperNetEx.dll</HintPath>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GF.Unity.Common.1.00.001\lib\net461\UnityEngine.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -317,12 +210,8 @@
     <Compile Include="Grain\GrainCellClient.cs" />
     <Compile Include="Grain\GrainType.cs" />
     <Compile Include="Main\CellConfig.cs" />
-    <Compile Include="Main\CouchbaseQue.cs" />
-    <Compile Include="Main\DbClientCouchbase.cs" />
-    <Compile Include="Main\DbClientZk.cs" />
     <Compile Include="Main\JsonConfig.cs" />
     <Compile Include="Main\OrleansBootstrap4Cell.cs" />
-    <Compile Include="Main\OrleansCouchbaseStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -334,6 +223,17 @@
       <Project>{4fded322-b9d0-4585-8432-1954a11cc41e}</Project>
       <Name>Fishing.GrainInterface</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OrleansConfiguration.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!--

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Orleans;
-using GF.Common;
-using GF.Server;
+using GF.Unity.Common;
 using Ps;
 
 public class BasePlayerTask<TDef> : Component<TDef> where TDef : DefPlayerTask, new()
