@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ProtoBuf;
 
-namespace Ps
+namespace Fishing
 {
     //-----------------------------------------------------------------------------
     public enum _eProtocolDesktop : byte

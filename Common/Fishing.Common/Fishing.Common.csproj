@@ -38,12 +38,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GF.Unity.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.002\lib\net461\GF.Unity.Common.dll</HintPath>
+    <Reference Include="GF.Unity.Common, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.003\lib\net461\GF.Unity.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="GF.Unity.Sqlite, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.002\lib\net461\GF.Unity.Sqlite.dll</HintPath>
+    <Reference Include="GF.Unity.Sqlite, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.003\lib\net461\GF.Unity.Sqlite.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
@@ -55,7 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Pngcs, Version=1.1.4.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.002\lib\net461\Pngcs.dll</HintPath>
+      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.003\lib\net461\Pngcs.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -64,7 +64,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.002\lib\net461\UnityEngine.dll</HintPath>
+      <HintPath>..\..\Server\packages\GF.Unity.Common.1.00.003\lib\net461\UnityEngine.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -215,12 +215,6 @@
     <Compile Include="TableData\TbDataTradeInfo.cs" />
     <Compile Include="TableData\TbDataUnitConsumables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ToolTips\ConsumToolTipDetail.cs" />
-    <Compile Include="ToolTips\ConsumToolTipHead.cs" />
-    <Compile Include="ToolTips\IToolTipDetail.cs" />
-    <Compile Include="ToolTips\IToolTipHead.cs" />
-    <Compile Include="ToolTips\ToolTipEnd.cs" />
-    <Compile Include="ToolTips\ToolTipHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

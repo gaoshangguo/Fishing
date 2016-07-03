@@ -4,7 +4,7 @@ using System.Text;
 using ProtoBuf;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     //-------------------------------------------------------------------------
     // Item网络传输的数据

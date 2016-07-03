@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public static class BaseJsonSerializer
     {

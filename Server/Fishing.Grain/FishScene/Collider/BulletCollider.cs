@@ -1,7 +1,7 @@
 ﻿using System;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class BulletCollider : TagCollider
     {

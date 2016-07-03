@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 using GF.Unity.Common;
 
-public class TbDataPlayerProfileSkin : EbData
+namespace Fishing
 {
-    //-------------------------------------------------------------------------
-    public string ProfileSkinName { get; private set; }
-    public string ProfileSkinPrefabName { get; private set; }
-
-    //-------------------------------------------------------------------------
-    public override void load(EbPropSet prop_set)
+    public class TbDataPlayerProfileSkin : EbData
     {
-        ProfileSkinName = prop_set.getPropString("T_ProfileSkinName").get();
-        ProfileSkinPrefabName = prop_set.getPropString("T_ProfileSkinPrefabName").get();
+        //-------------------------------------------------------------------------
+        public string ProfileSkinName { get; private set; }
+        public string ProfileSkinPrefabName { get; private set; }
+
+        //-------------------------------------------------------------------------
+        public override void load(EbPropSet prop_set)
+        {
+            ProfileSkinName = prop_set.getPropString("T_ProfileSkinName").get();
+            ProfileSkinPrefabName = prop_set.getPropString("T_ProfileSkinPrefabName").get();
+        }
     }
 }

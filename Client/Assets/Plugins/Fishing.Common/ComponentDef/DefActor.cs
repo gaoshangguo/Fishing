@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 角色
     public class DefActor : ComponentDef

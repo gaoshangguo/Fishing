@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 状态生成器1
     // 最普通的状态生成器，必创建指定状态

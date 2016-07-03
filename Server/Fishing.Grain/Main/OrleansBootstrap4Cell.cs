@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Text;
-using Orleans;
-using Orleans.Providers;
-using GF.Unity.Common;
-using GF.Orleans;
+﻿
 
-namespace Ps
+namespace Fishing
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using System.Text;
+    using Orleans;
+    using Orleans.Providers;
+    using GF.Unity.Common;
+
     public class OrleansBootstrap4Cell : IBootstrapProvider
     {
         //---------------------------------------------------------------------
@@ -20,7 +21,7 @@ namespace Ps
         public CellApp CellApp { get; private set; }
 
         //---------------------------------------------------------------------
-        public async Task Init(string name, IProviderRuntime providerRuntime, IProviderConfiguration config)
+        public Task Init(string name, IProviderRuntime providerRuntime, IProviderConfiguration config)
         {
             EntityMgr = new EntityMgr((byte)NodeType.Cell, NodeType.Cell.ToString());
 
@@ -44,7 +45,7 @@ namespace Ps
             EntityMgr.regEntityDef<EtDesktop>();
             EntityMgr.regEntityDef<EtPlayer>();
             EntityMgr.regEntityDef<EtPlayerMirror>();
-            
+
             // 初始化DataMgr
             {
                 string path_media = ServerPath.getPathMediaRoot();
@@ -81,7 +82,7 @@ namespace Ps
             //    //await grain_player.botNewAndEnterWorld(data_bot.NickName);
             //}
 
-            //return TaskDone.Done;
+            return TaskDone.Done;
         }
 
         //---------------------------------------------------------------------

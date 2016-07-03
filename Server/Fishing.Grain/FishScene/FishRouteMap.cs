@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class FishRouteMap
     {

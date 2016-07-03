@@ -12,7 +12,7 @@ using Orleans.Concurrency;
 using Orleans.Runtime;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 跑马灯新闻组，提供无状态服务
     [Reentrant]

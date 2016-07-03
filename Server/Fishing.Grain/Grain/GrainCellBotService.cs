@@ -9,7 +9,7 @@ using Orleans.Concurrency;
 using Orleans.Runtime;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 机器人无状态服务
     [Reentrant]

@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Text;
-using Orleans;
+﻿// Copyright (c) Cragon. All rights reserved.
 
-namespace Ps
+namespace Fishing
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Text;
+    using Orleans;
+
     public interface ICellPlayerObserver : IGrainObserver
     {
         //---------------------------------------------------------------------

@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{95AF8867-5BB7-4F04-A86E-9D428BDC0C4D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fishing.Gateway</RootNamespace>
     <AssemblyName>Fishing.Gateway</AssemblyName>
@@ -63,16 +63,20 @@
       <HintPath>..\packages\DotNetty.Transport.0.3.2\lib\net45\DotNetty.Transport.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="GF.Gateway, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GF.Gateway.1.00.000\lib\net461\GF.Gateway.dll</HintPath>
+    <Reference Include="GF.Gateway, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GF.Gateway.1.00.002\lib\net461\GF.Gateway.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="GF.Unity.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GF.Unity.Common.1.00.001\lib\net461\GF.Unity.Common.dll</HintPath>
+    <Reference Include="GF.GrainInterface.Player, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GF.Gateway.1.00.002\lib\net461\GF.GrainInterface.Player.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="GF.Unity.Sqlite, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GF.Unity.Common.1.00.001\lib\net461\GF.Unity.Sqlite.dll</HintPath>
+    <Reference Include="GF.Unity.Common, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GF.Unity.Common.1.00.003\lib\net461\GF.Unity.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GF.Unity.Sqlite, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GF.Unity.Common.1.00.003\lib\net461\GF.Unity.Sqlite.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
@@ -104,7 +108,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Pngcs, Version=1.1.4.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GF.Unity.Common.1.00.001\lib\net461\Pngcs.dll</HintPath>
+      <HintPath>..\packages\GF.Unity.Common.1.00.003\lib\net461\Pngcs.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -122,28 +126,12 @@
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GF.Unity.Common.1.00.001\lib\net461\UnityEngine.dll</HintPath>
+      <HintPath>..\packages\GF.Unity.Common.1.00.003\lib\net461\UnityEngine.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Component\BaseApp.cs" />
-    <Compile Include="Component\BaseBag.cs" />
-    <Compile Include="Component\BaseEquip.cs" />
-    <Compile Include="Component\BaseLogin.cs" />
-    <Compile Include="Component\BasePlayer.cs" />
-    <Compile Include="Component\BasePlayerChat.cs" />
-    <Compile Include="Component\BasePlayerDesktop.cs" />
-    <Compile Include="Component\BasePlayerLobby.cs" />
-    <Compile Include="Component\BasePlayerMailBox.cs" />
-    <Compile Include="Component\BasePlayerRanking.cs" />
-    <Compile Include="Component\BasePlayerTask.cs" />
-    <Compile Include="Component\BasePlayerTrade.cs" />
-    <Compile Include="Component\BaseStatus.cs" />
-    <Compile Include="Component\BasePlayerFriend.cs" />
-    <Compile Include="Main\CellPlayerObserver.cs" />
-    <Compile Include="Main\Program.cs" />
-    <Compile Include="Main\ProgramConfig.cs" />
+    <Compile Include="Dummy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,20 +140,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Common\Fishing.Common\Fishing.Common.csproj">
-      <Project>{636f7fc1-f769-418a-b83e-6a23de49d7cf}</Project>
-      <Name>Fishing.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fishing.GrainInterface\Fishing.GrainInterface.csproj">
-      <Project>{4fded322-b9d0-4585-8432-1954a11cc41e}</Project>
-      <Name>Fishing.GrainInterface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fishing.Grain\Fishing.Grain.csproj">
-      <Project>{3811aa0d-d33a-401b-adcf-9c616b5d289d}</Project>
-      <Name>Fishing.Grain</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />

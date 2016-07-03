@@ -2,7 +2,7 @@
 using ProtoBuf;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     //-------------------------------------------------------------------------
     public enum NodeType : byte

@@ -13,7 +13,7 @@ using Orleans.Runtime;
 using Orleans.Streams;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 玩家Grain，有状态，可重入
     [Reentrant]

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 状态元模板2
     // 指定间隔定时执行一次Effect

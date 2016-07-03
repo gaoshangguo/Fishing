@@ -6,7 +6,7 @@ using System.Text;
 using Orleans;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public static class StringDef
     {

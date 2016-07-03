@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ProtoBuf;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class CLogicProtocol : IDisposable
     {

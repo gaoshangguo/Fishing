@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Text;
-using Orleans;
+﻿// Copyright (c) Cragon. All rights reserved.
 
-namespace Ps
+namespace Fishing
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Text;
+    using Orleans;
+
     // 玩家无状态服务
     public interface ICellPlayerService : IGrainWithIntegerKey
     {

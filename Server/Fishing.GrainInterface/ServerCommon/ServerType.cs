@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using GF.Unity.Common;
-using GF.Orleans;
+﻿// Copyright (c) Cragon. All rights reserved.
 
-namespace Ps
+namespace Fishing
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using GF.Unity.Common;
+
     public static class ServerPath
     {
         //-------------------------------------------------------------------------

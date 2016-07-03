@@ -1,51 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Orleans;
-using GF.Unity.Common;
-using GF.Orleans;
-using Ps;
+﻿// Copyright (c) Cragon. All rights reserved.
 
-public class CellApp
+namespace Fishing
 {
-    //-------------------------------------------------------------------------
-    Dictionary<string, BtFactory> mMapBtFactory = new Dictionary<string, BtFactory>();
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Orleans;
+    using GF.Unity.Common;
+    using GF.GrainInterface.Player;
 
-    //-------------------------------------------------------------------------
-    public static CellApp Instance { get; private set; }
-    public CellConfig Cfg { get; private set; }
-    public ThreadSafeRandom Rd { get; private set; }
-    public JsonConfig jsonCfg { get; private set; }
-
-    //-------------------------------------------------------------------------
-    public CellApp()
+    public class CellApp
     {
-        Instance = this;
+        //-------------------------------------------------------------------------
+        Dictionary<string, BtFactory> mMapBtFactory = new Dictionary<string, BtFactory>();
 
-        Cfg = new CellConfig();
-        Rd = new ThreadSafeRandom();
-        jsonCfg = new JsonConfig();
-        // 注册BtFactory
-        _regBtFactory(new BtFactoryBot());
-        _regBtFactory(new BtFactoryPlayer());
-    }
+        //-------------------------------------------------------------------------
+        public static CellApp Instance { get; private set; }
+        public CellConfig Cfg { get; private set; }
+        public ThreadSafeRandom Rd { get; private set; }
+        public JsonConfig jsonCfg { get; private set; }
 
-    //-------------------------------------------------------------------------
-    public Bt createBt(string bt_name, Entity self)
-    {
-        BtFactory bt_factory = null;
-        mMapBtFactory.TryGetValue(bt_name, out bt_factory);
+        //-------------------------------------------------------------------------
+        public CellApp()
+        {
+            Instance = this;
 
-        if (bt_factory == null) return null;
-        else return bt_factory.createBt(self);
-    }
+            Cfg = new CellConfig();
+            Rd = new ThreadSafeRandom();
+            jsonCfg = new JsonConfig();
+            // 注册BtFactory
+            _regBtFactory(new BtFactoryBot());
+            _regBtFactory(new BtFactoryPlayer());
+        }
 
-    //-------------------------------------------------------------------------
-    void _regBtFactory(BtFactory bt_factory)
-    {
-        mMapBtFactory[bt_factory.getName()] = bt_factory;
+        //-------------------------------------------------------------------------
+        public Bt createBt(string bt_name, Entity self)
+        {
+            BtFactory bt_factory = null;
+            mMapBtFactory.TryGetValue(bt_name, out bt_factory);
+
+            if (bt_factory == null) return null;
+            else return bt_factory.createBt(self);
+        }
+
+        //-------------------------------------------------------------------------
+        void _regBtFactory(BtFactory bt_factory)
+        {
+            mMapBtFactory[bt_factory.getName()] = bt_factory;
+        }
     }
 }

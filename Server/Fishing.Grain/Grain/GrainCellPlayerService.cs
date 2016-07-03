@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 玩家无状态服务
     [Reentrant]

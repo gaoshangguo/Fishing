@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class CCoordinate
     {

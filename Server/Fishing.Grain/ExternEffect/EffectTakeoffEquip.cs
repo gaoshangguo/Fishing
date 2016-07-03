@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 脱装备
     public class EffectTakeoffEquip : Effect
@@ -18,7 +18,7 @@ namespace Ps
 
             // 从装备背包中移除
             var co_equip = et.getComponent<CellEquip<DefEquip>>();
-            item = co_equip.takeoffEquip((Ps.EquipSlot)item.TbDataItem.ItemTypeId);
+            item = co_equip.takeoffEquip((EquipSlot)item.TbDataItem.ItemTypeId);
 
             return null;
         }

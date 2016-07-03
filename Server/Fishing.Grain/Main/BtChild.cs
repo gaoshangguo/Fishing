@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public abstract class BtChild
     {

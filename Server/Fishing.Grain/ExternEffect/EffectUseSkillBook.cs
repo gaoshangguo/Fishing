@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 使用技能书
     public class EffectUseSkillBook : Effect

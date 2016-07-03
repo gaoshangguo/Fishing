@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class RouteParaCurve : IRoute
     {

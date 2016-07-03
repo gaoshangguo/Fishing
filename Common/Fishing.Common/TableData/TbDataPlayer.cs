@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 using GF.Unity.Common;
 
-public class TbDataPlayer : EbData
+namespace Fishing
 {
-    //-------------------------------------------------------------------------    
-    public string AiName { get; private set; }
-    public string DefaultIcon { get; private set; }
-
-    //-------------------------------------------------------------------------
-    public override void load(EbPropSet prop_set)
+    public class TbDataPlayer : EbData
     {
-        AiName = prop_set.getPropString("AiName").get();
-        DefaultIcon = prop_set.getPropString("DefaultIcon").get();
+        //-------------------------------------------------------------------------    
+        public string AiName { get; private set; }
+        public string DefaultIcon { get; private set; }
+
+        //-------------------------------------------------------------------------
+        public override void load(EbPropSet prop_set)
+        {
+            AiName = prop_set.getPropString("AiName").get();
+            DefaultIcon = prop_set.getPropString("DefaultIcon").get();
+        }
     }
 }

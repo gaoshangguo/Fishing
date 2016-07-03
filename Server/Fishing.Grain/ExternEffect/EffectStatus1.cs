@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 状态元模板1
     // 最普通的状态元模板，每秒定时执行一次Effect

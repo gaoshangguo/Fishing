@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public enum UnitType
     {
@@ -31,9 +31,6 @@ namespace Ps
 
         //-------------------------------------------------------------------------
         void destroy();
-
-        //-------------------------------------------------------------------------
-        ToolTip getToolTip(_eUiItemParent item_from);
     }
 
     public abstract class IUnitFactory

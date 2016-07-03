@@ -25,7 +25,7 @@ public enum CouchbaseQueDataType
     RecvMail = 700,
 }
 
-namespace Ps
+namespace Fishing
 {
     // 玩家代理Grain，有状态，可重入
     [Reentrant]

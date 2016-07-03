@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 using GF.Unity.Common;
 
-public class TbDataActorLevel : EbData
+namespace Fishing
 {
-    //-------------------------------------------------------------------------
-    public int Level { get; private set; }
-    public int Experience { get; private set; }
-
-    //-------------------------------------------------------------------------
-    public override void load(EbPropSet prop_set)
+    public class TbDataActorLevel : EbData
     {
-        Level = prop_set.getPropInt("Level").get();
-        Experience = prop_set.getPropInt("Experience").get();
+        //-------------------------------------------------------------------------
+        public int Level { get; private set; }
+        public int Experience { get; private set; }
+
+        //-------------------------------------------------------------------------
+        public override void load(EbPropSet prop_set)
+        {
+            Level = prop_set.getPropInt("Level").get();
+            Experience = prop_set.getPropInt("Experience").get();
+        }
     }
 }

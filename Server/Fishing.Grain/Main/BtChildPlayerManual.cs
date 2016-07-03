@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 行为树子节点：玩家手动操作
     public class BtChildPlayerManual : BtChild

@@ -9,7 +9,7 @@ using Orleans.Concurrency;
 using Orleans.Runtime;
 using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // FishingMgr管理后台无状态服务
     [Reentrant]
