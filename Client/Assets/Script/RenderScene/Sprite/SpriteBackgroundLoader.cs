@@ -2,33 +2,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using GF.Common;
-using Ps;
+using GF.Unity.Common;
 
-public class CSpriteBackgroundLoader
+namespace Fishing
 {
-    //-------------------------------------------------------------------------
-    StillSpriteLoader<StillSprite> mStillSpriteLoader = new StillSpriteLoader<StillSprite>();
-
-    //-------------------------------------------------------------------------
-    public StillSprite newBackgroundStillSprite(string prefab_name, CRenderScene scene)
+    public class CSpriteBackgroundLoader
     {
-        return mStillSpriteLoader.loadSpriteFromPrefab("Game/Background/" + prefab_name + "Prefab", scene);
-    }
+        //-------------------------------------------------------------------------
+        StillSpriteLoader<StillSprite> mStillSpriteLoader = new StillSpriteLoader<StillSprite>();
 
-    //-------------------------------------------------------------------------
-    public void freeBackgroundStillSprite(StillSprite still_sprite)
-    {
-        if (still_sprite == null) return;
-        //Resources.UnloadAsset(still_sprite.renderer.material.mainTexture);
-        still_sprite.destroy();
+        //-------------------------------------------------------------------------
+        public StillSprite newBackgroundStillSprite(string prefab_name, CRenderScene scene)
+        {
+            return mStillSpriteLoader.loadSpriteFromPrefab("Game/Background/" + prefab_name + "Prefab", scene);
+        }
 
-        //Resources.UnloadUnusedAssets();
-    }
+        //-------------------------------------------------------------------------
+        public void freeBackgroundStillSprite(StillSprite still_sprite)
+        {
+            if (still_sprite == null) return;
+            //Resources.UnloadAsset(still_sprite.renderer.material.mainTexture);
+            still_sprite.destroy();
 
-    //-------------------------------------------------------------------------
-    public void destroy()
-    {
-        mStillSpriteLoader.destroy();
+            //Resources.UnloadUnusedAssets();
+        }
+
+        //-------------------------------------------------------------------------
+        public void destroy()
+        {
+            mStillSpriteLoader.destroy();
+        }
     }
 }

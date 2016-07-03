@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 客户端无需操作DefBag中的数据
     public class ClientBag<TDef> : Component<TDef> where TDef : DefBag, new()
@@ -20,9 +20,9 @@ namespace Ps
         //-------------------------------------------------------------------------
         public override void init()
         {
-            defNodeRpcMethod<BagResponse>(
-                (ushort)MethodType.s2cBagResponse, s2cBagResponse);
-            defNodeRpcMethod<BagNotify>(
+            DefaultRpcSession.defRpcMethod<BagResponse>(
+                 (ushort)MethodType.s2cBagResponse, s2cBagResponse);
+            DefaultRpcSession.defRpcMethod<BagNotify>(
                 (ushort)MethodType.s2cBagNotify, s2cBagNotify);
 
             Entity et_app = EntityMgr.findFirstEntityByType<EtApp>();
@@ -270,7 +270,7 @@ namespace Ps
             bag_request.id = BagRequestId.SetupBag;
             bag_request.data = null;
 
-            CoApp.rpc(MethodType.c2sBagRequest, bag_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sBagRequest, bag_request);
         }
 
         //-------------------------------------------------------------------------
@@ -284,7 +284,7 @@ namespace Ps
             bag_request.id = BagRequestId.OperateItem;
             bag_request.data = EbTool.protobufSerialize<ItemOperate>(item_operate);
 
-            CoApp.rpc(MethodType.c2sBagRequest, bag_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sBagRequest, bag_request);
         }
 
         //-------------------------------------------------------------------------

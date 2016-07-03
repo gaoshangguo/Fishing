@@ -14,7 +14,7 @@ namespace Fishing
     }
 
     //-------------------------------------------------------------------------
-    public enum MethodType : short
+    public enum MethodType : ushort
     {
         None = 0,// 无效
 

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // DataEye
     public class DefDataEye : ComponentDef

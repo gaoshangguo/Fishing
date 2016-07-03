@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientPlayerMirror<TDef> : Component<TDef> where TDef : DefPlayerMirror, new()
     {
@@ -28,7 +28,7 @@ namespace Ps
             {
             //CoActorMirror.SceneActorObj.setIcon(Def.mPropIcon.get());
             //CoActorMirror.SceneActorObj.setNickName(Def.mPropNickName.get(), Color.green);
-        });
+            });
             CoActorMirror.updateMirrorActorInfo(Def.mPropNickName.get(), Def.mPropIcon.get());
 
             if (CoActorMirror.IsMe)

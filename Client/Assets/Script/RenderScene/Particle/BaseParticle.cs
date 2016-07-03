@@ -1,51 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Ps;
 
-public class NullParticle : BaseParticle
+namespace Fishing
 {
-    protected override void create()
+    public class NullParticle : BaseParticle
     {
-        SignFinished();
-    }
-
-    public override void destroy()
-    {
-    }
-}
-
-public abstract class BaseParticle : MonoBehaviour
-{
-    public bool IsFinished { get { return mIsFinished; } }
-    bool mIsFinished = false;
-
-    Dictionary<string, object> mParameters = new Dictionary<string, object>();
-
-    public void init(Dictionary<string,object> parameters)
-    {
-        foreach (var p in parameters)
+        protected override void create()
         {
-            mParameters.Add(p.Key, p.Value);
+            SignFinished();
         }
 
-        create();
-    }
-
-    protected T getParameter<T>(string key)
-    {
-        if (mParameters.ContainsKey(key))
+        public override void destroy()
         {
-            return (T)mParameters[key];
         }
-        throw new Exception(GetType().ToString() + "::getParameter::there are no key:" + key);
     }
 
-    protected abstract void create();
-    public abstract void destroy();
-
-    protected void SignFinished()
+    public abstract class BaseParticle : MonoBehaviour
     {
-        mIsFinished = true;
+        public bool IsFinished { get { return mIsFinished; } }
+        bool mIsFinished = false;
+
+        Dictionary<string, object> mParameters = new Dictionary<string, object>();
+
+        public void init(Dictionary<string, object> parameters)
+        {
+            foreach (var p in parameters)
+            {
+                mParameters.Add(p.Key, p.Value);
+            }
+
+            create();
+        }
+
+        protected T getParameter<T>(string key)
+        {
+            if (mParameters.ContainsKey(key))
+            {
+                return (T)mParameters[key];
+            }
+            throw new Exception(GetType().ToString() + "::getParameter::there are no key:" + key);
+        }
+
+        protected abstract void create();
+        public abstract void destroy();
+
+        protected void SignFinished()
+        {
+            mIsFinished = true;
+        }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     // 对白任务
     public class TaskDialogue : TaskBase

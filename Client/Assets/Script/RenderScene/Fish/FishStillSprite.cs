@@ -3,44 +3,48 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using GF.Common;
-using Ps;
+using GF.Unity.Common;
 
-public sealed class FishStillSprite : StillSprite
+namespace Fishing
 {
-    //-------------------------------------------------------------------------
-    ISpriteFish mISpriteFish = null;
-
-    //-------------------------------------------------------------------------
-    public void init(ISpriteFish sprite_fish, CRenderScene scene)
+    public sealed class FishStillSprite : StillSprite
     {
-        base.init(scene);
-        mISpriteFish = sprite_fish;
-    }
+        //-------------------------------------------------------------------------
+        ISpriteFish mISpriteFish = null;
 
-    //-------------------------------------------------------------------------
-    public void setISpriteFishNull() {
-        mISpriteFish = null;
-    }
-
-    //-------------------------------------------------------------------------
-    public void detachChildren() {
-        transform.DetachChildren();
-    }
-
-    //-------------------------------------------------------------------------
-    public void destroy()
-    {
-        setISpriteFishNull();
-        if (gameObject != null)
+        //-------------------------------------------------------------------------
+        public void init(ISpriteFish sprite_fish, CRenderScene scene)
         {
-            Destroy(gameObject);
+            base.init(scene);
+            mISpriteFish = sprite_fish;
         }
-    }
 
-    //-------------------------------------------------------------------------
-    public ISpriteFish getSpriteFish()
-    {
-        return mISpriteFish;
+        //-------------------------------------------------------------------------
+        public void setISpriteFishNull()
+        {
+            mISpriteFish = null;
+        }
+
+        //-------------------------------------------------------------------------
+        public void detachChildren()
+        {
+            transform.DetachChildren();
+        }
+
+        //-------------------------------------------------------------------------
+        public void destroy()
+        {
+            setISpriteFishNull();
+            if (gameObject != null)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        //-------------------------------------------------------------------------
+        public ISpriteFish getSpriteFish()
+        {
+            return mISpriteFish;
+        }
     }
 }

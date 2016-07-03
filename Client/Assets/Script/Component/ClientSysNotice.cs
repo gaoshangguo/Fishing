@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using GF.Common;
+using GF.Unity.Common;
 using UnityEngine;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientSysNotice<TDef> : Component<TDef> where TDef : DefSysNotice, new()
     {

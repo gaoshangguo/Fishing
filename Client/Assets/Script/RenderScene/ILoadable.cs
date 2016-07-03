@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ps
+namespace Fishing
 {
     public interface ILoadable
     {

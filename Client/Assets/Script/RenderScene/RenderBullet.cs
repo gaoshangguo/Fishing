@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class CRenderBullet : IDisposable
     {

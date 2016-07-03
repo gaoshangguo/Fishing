@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientPlayerChat<TDef> : Component<TDef> where TDef : DefPlayerChat, new()
     {
@@ -16,9 +16,9 @@ namespace Ps
         //-------------------------------------------------------------------------
         public override void init()
         {
-            defNodeRpcMethod<PlayerChatResponse>(
+            DefaultRpcSession.defRpcMethod<PlayerChatResponse>(
                 (ushort)MethodType.s2cPlayerChatResponse, s2cPlayerChatResponse);
-            defNodeRpcMethod<PlayerChatNotify>(
+            DefaultRpcSession.defRpcMethod<PlayerChatNotify>(
                 (ushort)MethodType.s2cPlayerChatNotify, s2cPlayerChatNotify);
 
             Entity et_app = EntityMgr.findFirstEntityByType<EtApp>();
@@ -112,7 +112,7 @@ namespace Ps
             playerchat_request.id = PlayerChatRequestId.SendChatMsg;
             playerchat_request.data = EbTool.protobufSerialize<ChatMsgSend>(msg_send);
 
-            CoApp.rpc(MethodType.c2sPlayerChatRequest, playerchat_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerChatRequest, playerchat_request);
         }
     }
 }

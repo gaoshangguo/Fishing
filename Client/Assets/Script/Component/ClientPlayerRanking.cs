@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientPlayerRanking<TDef> : Component<TDef> where TDef : DefPlayerRanking, new()
     {
@@ -19,9 +19,9 @@ namespace Ps
         {
             EbLog.Note("ClientPlayerRanking.init()");
 
-            defNodeRpcMethod<PlayerRankingResponse>(
+            DefaultRpcSession.defRpcMethod<PlayerRankingResponse>(
                 (ushort)MethodType.s2cPlayerRankingResponse, s2cPlayerRankingResponse);
-            defNodeRpcMethod<PlayerRankingNotify>(
+            DefaultRpcSession.defRpcMethod<PlayerRankingNotify>(
                 (ushort)MethodType.s2cPlayerRankingNotify, s2cPlayerRankingNotify);
 
             Entity et_app = EntityMgr.findFirstEntityByType<EtApp>();
@@ -107,7 +107,7 @@ namespace Ps
             ranking_request.id = PlayerRankingRequestId.GetRankingList;
             ranking_request.data = EbTool.protobufSerialize<RankingListType>(ranking_list_type);
 
-            CoApp.rpc(MethodType.c2sPlayerRankingRequest, ranking_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRankingRequest, ranking_request);
         }
 
         //-------------------------------------------------------------------------

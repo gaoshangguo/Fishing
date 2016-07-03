@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GF.Common;
+using GF.Unity.Common;
 using UnityEngine;
 
-namespace Ps
+namespace Fishing
 {
     public class CSpriteFishGroup : ISpriteFish
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientPlayerMailBox<TDef> : Component<TDef> where TDef : DefPlayerMailBox, new()
     {
@@ -19,9 +19,9 @@ namespace Ps
         {
             EbLog.Note("ClientPlayerMailBox.init()");
 
-            defNodeRpcMethod<PlayerMailBoxResponse>(
+            DefaultRpcSession.defRpcMethod<PlayerMailBoxResponse>(
                 (ushort)MethodType.s2cPlayerMailBoxResponse, s2cPlayerMailBoxResponse);
-            defNodeRpcMethod<PlayerMailBoxNotify>(
+            DefaultRpcSession.defRpcMethod<PlayerMailBoxNotify>(
                 (ushort)MethodType.s2cPlayerMailBoxNotify, s2cPlayerMailBoxNotify);
 
             Entity et_app = EntityMgr.findFirstEntityByType<EtApp>();
@@ -184,7 +184,7 @@ namespace Ps
             mailbox_request.id = PlayerMailBoxRequestId.MailBoxInitInfo;
             mailbox_request.data = null;
 
-            CoApp.rpc(MethodType.c2sPlayerMailBoxRequest, mailbox_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerMailBoxRequest, mailbox_request);
         }
 
         //-------------------------------------------------------------------------
@@ -195,7 +195,7 @@ namespace Ps
             mailbox_request.id = PlayerMailBoxRequestId.MailOperate;
             mailbox_request.data = EbTool.protobufSerialize<MailOperate>(mail_operate);
 
-            CoApp.rpc(MethodType.c2sPlayerMailBoxRequest, mailbox_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerMailBoxRequest, mailbox_request);
         }
 
         //-------------------------------------------------------------------------
@@ -206,7 +206,7 @@ namespace Ps
             mailbox_request.id = PlayerMailBoxRequestId.DeleteSystemEvent;
             mailbox_request.data = EbTool.protobufSerialize<string>(se_guid);
 
-            CoApp.rpc(MethodType.c2sPlayerMailBoxRequest, mailbox_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerMailBoxRequest, mailbox_request);
 
             var list_se = Def.mPropListSystemEvent.get();
             foreach (var i in list_se)

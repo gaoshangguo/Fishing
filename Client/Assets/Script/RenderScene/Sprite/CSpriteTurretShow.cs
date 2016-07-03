@@ -1,127 +1,129 @@
 ﻿using System;
 using System.Collections.Generic;
-using GF.Common;
+using GF.Unity.Common;
 using UnityEngine;
-using Ps;
 
-public class CSpriteTurretShow
+namespace Fishing
 {
-    //-------------------------------------------------------------------------
-    CSpriteTurretScoreShow mCSpriteTurretScoreShow = null;
-    CSpriteTurret mSpriteTurret = null;
-    CRenderScene mScene = null;
-
-    //-------------------------------------------------------------------------
-    public void create(CRenderScene scene, CRenderTurret render_turret)
+    public class CSpriteTurretShow
     {
-        mScene = scene;
+        //-------------------------------------------------------------------------
+        CSpriteTurretScoreShow mCSpriteTurretScoreShow = null;
+        CSpriteTurret mSpriteTurret = null;
+        CRenderScene mScene = null;
 
-        if (mScene.isBot()) return;
-
-        mCSpriteTurretScoreShow = new CSpriteTurretScoreShow();
-        mCSpriteTurretScoreShow.create(scene, render_turret);
-
-        mSpriteTurret = new CSpriteTurret();
-        mSpriteTurret.create(scene, render_turret);
-        mSpriteTurret.aimAt(render_turret.getTurretAngle());
-        mSpriteTurret.displayRate(render_turret.getTurretRate());
-        mSpriteTurret.reloadAnimation();
-    }
-
-    //-------------------------------------------------------------------------
-    public void update(float elapsed_tm)
-    {
-        if (mScene.isBot()) return;
-
-        mCSpriteTurretScoreShow.update(elapsed_tm);
-        mSpriteTurret.update(elapsed_tm);
-    }
-
-    //-------------------------------------------------------------------------
-    public void destroy()
-    {
-        if (mScene.isBot()) return;
-
-        if (mCSpriteTurretScoreShow != null)
+        //-------------------------------------------------------------------------
+        public void create(CRenderScene scene, CRenderTurret render_turret)
         {
-            mCSpriteTurretScoreShow.destroy();
-            mCSpriteTurretScoreShow = null;
+            mScene = scene;
+
+            if (mScene.isBot()) return;
+
+            mCSpriteTurretScoreShow = new CSpriteTurretScoreShow();
+            mCSpriteTurretScoreShow.create(scene, render_turret);
+
+            mSpriteTurret = new CSpriteTurret();
+            mSpriteTurret.create(scene, render_turret);
+            mSpriteTurret.aimAt(render_turret.getTurretAngle());
+            mSpriteTurret.displayRate(render_turret.getTurretRate());
+            mSpriteTurret.reloadAnimation();
         }
 
-        if (mSpriteTurret != null)
+        //-------------------------------------------------------------------------
+        public void update(float elapsed_tm)
         {
-            mSpriteTurret.destroy();
-            mSpriteTurret = null;
+            if (mScene.isBot()) return;
+
+            mCSpriteTurretScoreShow.update(elapsed_tm);
+            mSpriteTurret.update(elapsed_tm);
         }
-    }
 
-    //-------------------------------------------------------------------------
-    public void setAim(CRenderFish lock_fish)
-    {
-        if (mScene.isBot()) return;
-        mCSpriteTurretScoreShow.setAim(lock_fish);
-    }
+        //-------------------------------------------------------------------------
+        public void destroy()
+        {
+            if (mScene.isBot()) return;
 
-    //-------------------------------------------------------------------------
-    public void displayScoreTurnplate(int score, TbDataParticle particle_data)
-    {
-        if (mScene.isBot()) return;
-        mCSpriteTurretScoreShow.displayScoreTurnplate(score, particle_data);
-    }
+            if (mCSpriteTurretScoreShow != null)
+            {
+                mCSpriteTurretScoreShow.destroy();
+                mCSpriteTurretScoreShow = null;
+            }
 
-    //-------------------------------------------------------------------------
-    public void displayChips(int score)
-    {
-        if (mScene.isBot()) return;
-        mCSpriteTurretScoreShow.displayChips(score);
-    }
+            if (mSpriteTurret != null)
+            {
+                mSpriteTurret.destroy();
+                mSpriteTurret = null;
+            }
+        }
 
-    //-------------------------------------------------------------------------
-    public void fireAt(float target_direction)
-    {
-        if (mScene.isBot()) return;
-        mSpriteTurret.fireAt(target_direction);
-    }
+        //-------------------------------------------------------------------------
+        public void setAim(CRenderFish lock_fish)
+        {
+            if (mScene.isBot()) return;
+            mCSpriteTurretScoreShow.setAim(lock_fish);
+        }
 
-    //-------------------------------------------------------------------------
-    public void aimAt(float target_direction)
-    {
-        if (mScene.isBot()) return;
-        mSpriteTurret.aimAt(target_direction);
-    }
+        //-------------------------------------------------------------------------
+        public void displayScoreTurnplate(int score, TbDataParticle particle_data)
+        {
+            if (mScene.isBot()) return;
+            mCSpriteTurretScoreShow.displayScoreTurnplate(score, particle_data);
+        }
 
-    //-------------------------------------------------------------------------
-    public void displayLinkFish(CRenderFish fish)
-    {
-        if (mScene.isBot()) return;
-        mSpriteTurret.displayLinkFish(fish);
-    }
+        //-------------------------------------------------------------------------
+        public void displayChips(int score)
+        {
+            if (mScene.isBot()) return;
+            mCSpriteTurretScoreShow.displayChips(score);
+        }
 
-    //-------------------------------------------------------------------------
-    public void setBarrelColor(UnityEngine.Color c)
-    {
-        if (mScene.isBot()) return;
-        mSpriteTurret.setBarrelColor(c);
-    }
+        //-------------------------------------------------------------------------
+        public void fireAt(float target_direction)
+        {
+            if (mScene.isBot()) return;
+            mSpriteTurret.fireAt(target_direction);
+        }
 
-    //-------------------------------------------------------------------------
-    public void setScore(int score)
-    {
-        if (mScene.isBot()) return;
-        //mCSpriteTurretScoreShow.setScore(score);
-    }
+        //-------------------------------------------------------------------------
+        public void aimAt(float target_direction)
+        {
+            if (mScene.isBot()) return;
+            mSpriteTurret.aimAt(target_direction);
+        }
 
-    //-------------------------------------------------------------------------
-    public void reloadAnimation()
-    {
-        if (mScene.isBot()) return;
-        mSpriteTurret.reloadAnimation();
-    }
+        //-------------------------------------------------------------------------
+        public void displayLinkFish(CRenderFish fish)
+        {
+            if (mScene.isBot()) return;
+            mSpriteTurret.displayLinkFish(fish);
+        }
 
-    //-------------------------------------------------------------------------
-    public void displayRate(int number)
-    {
-        if (mScene.isBot()) return;
-        mSpriteTurret.displayRate(number);
+        //-------------------------------------------------------------------------
+        public void setBarrelColor(UnityEngine.Color c)
+        {
+            if (mScene.isBot()) return;
+            mSpriteTurret.setBarrelColor(c);
+        }
+
+        //-------------------------------------------------------------------------
+        public void setScore(int score)
+        {
+            if (mScene.isBot()) return;
+            //mCSpriteTurretScoreShow.setScore(score);
+        }
+
+        //-------------------------------------------------------------------------
+        public void reloadAnimation()
+        {
+            if (mScene.isBot()) return;
+            mSpriteTurret.reloadAnimation();
+        }
+
+        //-------------------------------------------------------------------------
+        public void displayRate(int number)
+        {
+            if (mScene.isBot()) return;
+            mSpriteTurret.displayRate(number);
+        }
     }
 }

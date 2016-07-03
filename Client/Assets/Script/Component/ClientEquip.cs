@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientEquip<TDef> : Component<TDef> where TDef : DefEquip, new()
     {
@@ -19,9 +19,9 @@ namespace Ps
         //-------------------------------------------------------------------------
         public override void init()
         {
-            defNodeRpcMethod<EquipResponse>(
+            DefaultRpcSession.defRpcMethod<EquipResponse>(
                 (ushort)MethodType.s2cEquipResponse, s2cEquipResponse);
-            defNodeRpcMethod<EquipNotify>(
+            DefaultRpcSession.defRpcMethod<EquipNotify>(
                 (ushort)MethodType.s2cEquipNotify, s2cEquipNotify);
 
             Entity et_app = EntityMgr.findFirstEntityByType<EtApp>();
@@ -143,7 +143,7 @@ namespace Ps
             equip_request.id = EquipRequestId.SetupEquip;
             equip_request.data = null;
 
-            CoApp.rpc(MethodType.c2sEquipRequest, equip_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sEquipRequest, equip_request);
         }
 
         //-------------------------------------------------------------------------
@@ -153,7 +153,7 @@ namespace Ps
             equip_request.id = EquipRequestId.TakeoffEquip;
             equip_request.data = EbTool.protobufSerialize<EquipSlot>(equip_slot);
 
-            CoApp.rpc(MethodType.c2sEquipRequest, equip_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sEquipRequest, equip_request);
         }
 
         //-------------------------------------------------------------------------

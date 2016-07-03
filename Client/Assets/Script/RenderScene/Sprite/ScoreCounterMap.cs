@@ -2,37 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GF.Common;
+using GF.Unity.Common;
 using UnityEngine;
 using System.Text.RegularExpressions;
-using Ps;
 
-class ScoreCounterMap
+namespace Fishing
 {
-    Dictionary<int, int> mDicScoreGap = new Dictionary<int, int>();
-
-    public void create(string score_gap)
+    class ScoreCounterMap
     {
-        mDicScoreGap.Clear();
+        Dictionary<int, int> mDicScoreGap = new Dictionary<int, int>();
 
-        string score_gap_no_space = Regex.Replace(score_gap, @"\s", "");
-        string[] each_value = score_gap_no_space.Split(new char[1] { ';' });
-
-        string[] each_entry = null;
-
-        foreach (var it in each_value)
+        public void create(string score_gap)
         {
-            each_entry = it.Split(new char[1] { ',' });
-            mDicScoreGap.Add(int.Parse(each_entry[0]), int.Parse(each_entry[1]));
-        }
-    }
+            mDicScoreGap.Clear();
 
-    public int getNumberByScore(int score)
-    {
-        foreach (var it in mDicScoreGap)
-        {
-            if (score < it.Key) { return it.Value; }
+            string score_gap_no_space = Regex.Replace(score_gap, @"\s", "");
+            string[] each_value = score_gap_no_space.Split(new char[1] { ';' });
+
+            string[] each_entry = null;
+
+            foreach (var it in each_value)
+            {
+                each_entry = it.Split(new char[1] { ',' });
+                mDicScoreGap.Add(int.Parse(each_entry[0]), int.Parse(each_entry[1]));
+            }
         }
-        return 1;
+
+        public int getNumberByScore(int score)
+        {
+            foreach (var it in mDicScoreGap)
+            {
+                if (score < it.Key) { return it.Value; }
+            }
+            return 1;
+        }
     }
 }

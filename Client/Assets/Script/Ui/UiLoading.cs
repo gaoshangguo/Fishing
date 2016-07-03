@@ -3,56 +3,59 @@ using System;
 using System.Collections;
 using FairyGUI;
 
-public class UiLoading : UiBase
+namespace Fishing
 {
-    //-------------------------------------------------------------------------
-    public bool IsFinished { get; private set; }
-    public Action OnFinished { get; set; }
-
-    //-------------------------------------------------------------------------
-    public override void create()
+    public class UiLoading : UiBase
     {
-        OnFinished = null;
-        IsFinished = false;
+        //-------------------------------------------------------------------------
+        public bool IsFinished { get; private set; }
+        public Action OnFinished { get; set; }
 
-        Timers.inst.Add(0.01f, 0, _playProgress);
-    }
-
-    //-------------------------------------------------------------------------
-    public override void destroy()
-    {
-        Timers.inst.Remove(_playProgress);
-    }
-
-    //-------------------------------------------------------------------------
-    public override void update(float elapsed_tm)
-    {
-    }
-
-    //-------------------------------------------------------------------------
-    public void setTip(string tip)
-    {
-
-    }
-
-    //-------------------------------------------------------------------------
-    void _playProgress(object param)
-    {
-        GProgressBar obj = ComUi.GetChild("ProgressBar") as GProgressBar;
-        if (obj != null)
+        //-------------------------------------------------------------------------
+        public override void create()
         {
-            if (obj.value <= obj.max)
-            {
-                obj.value += 2;
-            }
-            else
-            {
-                Timers.inst.Remove(_playProgress);
+            OnFinished = null;
+            IsFinished = false;
 
-                IsFinished = true;
-                if (OnFinished != null)
+            Timers.inst.Add(0.01f, 0, _playProgress);
+        }
+
+        //-------------------------------------------------------------------------
+        public override void destroy()
+        {
+            Timers.inst.Remove(_playProgress);
+        }
+
+        //-------------------------------------------------------------------------
+        public override void update(float elapsed_tm)
+        {
+        }
+
+        //-------------------------------------------------------------------------
+        public void setTip(string tip)
+        {
+
+        }
+
+        //-------------------------------------------------------------------------
+        void _playProgress(object param)
+        {
+            GProgressBar obj = ComUi.GetChild("ProgressBar") as GProgressBar;
+            if (obj != null)
+            {
+                if (obj.value <= obj.max)
                 {
-                    OnFinished();
+                    obj.value += 2;
+                }
+                else
+                {
+                    Timers.inst.Remove(_playProgress);
+
+                    IsFinished = true;
+                    if (OnFinished != null)
+                    {
+                        OnFinished();
+                    }
                 }
             }
         }

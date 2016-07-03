@@ -1,121 +1,123 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using GF.Common;
-using Ps;
+using GF.Unity.Common;
 
-public class CSpriteTurret
+namespace Fishing
 {
-    //-------------------------------------------------------------------------
-    CRenderScene mScene = null;
-    CRenderTurret mRenderTurret = null;
-    CSpriteTurretFort mCSpriteTurretFort = null;
-    //CSpriteNumber mRateNumber = null;
-    LinkLockedFishFeature mLinkLockedFishFeature = null;
-
-    EbVector3 mRateNumberPosition = EbVector3.Zero;
-    float mRateNumberAngel = 0;
-
-    //-------------------------------------------------------------------------
-    public void create(CRenderScene scene, CRenderTurret render_turret)
+    public class CSpriteTurret
     {
-        mScene = scene;
-        mRenderTurret = render_turret;
+        //-------------------------------------------------------------------------
+        CRenderScene mScene = null;
+        CRenderTurret mRenderTurret = null;
+        CSpriteTurretFort mCSpriteTurretFort = null;
+        //CSpriteNumber mRateNumber = null;
+        LinkLockedFishFeature mLinkLockedFishFeature = null;
 
-        mCSpriteTurretFort = new CSpriteTurretFort();
-        mCSpriteTurretFort.create(mScene, mRenderTurret);
+        EbVector3 mRateNumberPosition = EbVector3.Zero;
+        float mRateNumberAngel = 0;
 
-        mLinkLockedFishFeature = new LinkLockedFishFeature(mScene, mRenderTurret);
-
-        //mRateNumber = new CSpriteNumber(mScene, new CPanelDigitFactory(mScene));
-        //mRateNumber.create(0, mRateNumberPosition, mRateNumberAngel, CSpriteNumber._eNumberSize.Small1);
-        //mRateNumber.setTag("CSpriteTurret" + mRenderTurret.getTurretId());
-        //mRateNumber.setTrigger(true);
-    }
-
-    //-------------------------------------------------------------------------
-    public void update(float elapsed_tm)
-    {
-        if (mLinkLockedFishFeature != null)
+        //-------------------------------------------------------------------------
+        public void create(CRenderScene scene, CRenderTurret render_turret)
         {
-            mLinkLockedFishFeature.update(Time.deltaTime);
+            mScene = scene;
+            mRenderTurret = render_turret;
+
+            mCSpriteTurretFort = new CSpriteTurretFort();
+            mCSpriteTurretFort.create(mScene, mRenderTurret);
+
+            mLinkLockedFishFeature = new LinkLockedFishFeature(mScene, mRenderTurret);
+
+            //mRateNumber = new CSpriteNumber(mScene, new CPanelDigitFactory(mScene));
+            //mRateNumber.create(0, mRateNumberPosition, mRateNumberAngel, CSpriteNumber._eNumberSize.Small1);
+            //mRateNumber.setTag("CSpriteTurret" + mRenderTurret.getTurretId());
+            //mRateNumber.setTrigger(true);
         }
 
-        if (mCSpriteTurretFort != null)
+        //-------------------------------------------------------------------------
+        public void update(float elapsed_tm)
         {
-            mCSpriteTurretFort.update(elapsed_tm);
-        }
-    }
+            if (mLinkLockedFishFeature != null)
+            {
+                mLinkLockedFishFeature.update(Time.deltaTime);
+            }
 
-    //-------------------------------------------------------------------------
-    public void destroy()
-    {
-        if (mCSpriteTurretFort != null)
-        {
-            mCSpriteTurretFort.destroy();
-            mCSpriteTurretFort = null;
-        }
-
-        if (mLinkLockedFishFeature != null)
-        {
-            mLinkLockedFishFeature.destroy();
-            mLinkLockedFishFeature = null;
+            if (mCSpriteTurretFort != null)
+            {
+                mCSpriteTurretFort.update(elapsed_tm);
+            }
         }
 
-        //mRateNumber.destroy();
-        //mRateNumber = null;
-    }
+        //-------------------------------------------------------------------------
+        public void destroy()
+        {
+            if (mCSpriteTurretFort != null)
+            {
+                mCSpriteTurretFort.destroy();
+                mCSpriteTurretFort = null;
+            }
 
-    //-------------------------------------------------------------------------
-    public void fireAt(float target_direction)
-    {
-        mCSpriteTurretFort.fireAt(target_direction);
-    }
+            if (mLinkLockedFishFeature != null)
+            {
+                mLinkLockedFishFeature.destroy();
+                mLinkLockedFishFeature = null;
+            }
 
-    //-------------------------------------------------------------------------
-    public void aimAt(float target_direction)
-    {
-        mCSpriteTurretFort.aimAt(target_direction);
-    }
+            //mRateNumber.destroy();
+            //mRateNumber = null;
+        }
 
-    //-------------------------------------------------------------------------
-    public void reloadAnimation()
-    {
-        mCSpriteTurretFort.reloadAnimation();
-    }
+        //-------------------------------------------------------------------------
+        public void fireAt(float target_direction)
+        {
+            mCSpriteTurretFort.fireAt(target_direction);
+        }
 
-    //-------------------------------------------------------------------------
-    public void setBarrelColor(UnityEngine.Color color)
-    {
-        mCSpriteTurretFort.setBarrelColor(color);
-    }
+        //-------------------------------------------------------------------------
+        public void aimAt(float target_direction)
+        {
+            mCSpriteTurretFort.aimAt(target_direction);
+        }
 
-    //-------------------------------------------------------------------------
-    public void displayLinkFish(CRenderFish fish)
-    {
-        mLinkLockedFishFeature.display(fish);
-    }
+        //-------------------------------------------------------------------------
+        public void reloadAnimation()
+        {
+            mCSpriteTurretFort.reloadAnimation();
+        }
 
-    //-------------------------------------------------------------------------
-    public void displayRate(int number)
-    {
-        //mRateNumber.destroy();
-        //mRateNumber.setNumber(number);
-        //mRateNumber.setLayer(mScene.getLayerAlloter().getLayer(_eLevelLayer.TurretRate));
+        //-------------------------------------------------------------------------
+        public void setBarrelColor(UnityEngine.Color color)
+        {
+            mCSpriteTurretFort.setBarrelColor(color);
+        }
 
-        //int turret_id = mRenderTurret.getTurretId();
-        //if (turret_id == 0 || turret_id == 1)
-        //{
-        //    mRateNumber.setPosition(mScene.getTurretHelper().getPositionByOffset(mRenderTurret.getTurretId(), mScene.getRenderConfigure().TurretRateOffset),
-        //        0f);
-        //}
-        //else
-        //{
-        //    mRateNumber.setPosition(mScene.getTurretHelper().getPositionByOffset(mRenderTurret.getTurretId(), mScene.getRenderConfigure().TurretRateOffset),
-        //        mScene.getTurretHelper().getBaseAngleByTurretId(mRenderTurret.getTurretId()));
-        //}
-        //mRateNumber.setTrigger(true);
+        //-------------------------------------------------------------------------
+        public void displayLinkFish(CRenderFish fish)
+        {
+            mLinkLockedFishFeature.display(fish);
+        }
 
-        //mRateNumber.setPosition(new EbVector3(10000,10000,0),0);
+        //-------------------------------------------------------------------------
+        public void displayRate(int number)
+        {
+            //mRateNumber.destroy();
+            //mRateNumber.setNumber(number);
+            //mRateNumber.setLayer(mScene.getLayerAlloter().getLayer(_eLevelLayer.TurretRate));
+
+            //int turret_id = mRenderTurret.getTurretId();
+            //if (turret_id == 0 || turret_id == 1)
+            //{
+            //    mRateNumber.setPosition(mScene.getTurretHelper().getPositionByOffset(mRenderTurret.getTurretId(), mScene.getRenderConfigure().TurretRateOffset),
+            //        0f);
+            //}
+            //else
+            //{
+            //    mRateNumber.setPosition(mScene.getTurretHelper().getPositionByOffset(mRenderTurret.getTurretId(), mScene.getRenderConfigure().TurretRateOffset),
+            //        mScene.getTurretHelper().getBaseAngleByTurretId(mRenderTurret.getTurretId()));
+            //}
+            //mRateNumber.setTrigger(true);
+
+            //mRateNumber.setPosition(new EbVector3(10000,10000,0),0);
+        }
     }
 }

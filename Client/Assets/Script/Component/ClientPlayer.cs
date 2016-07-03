@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientPlayer<TDef> : Component<TDef> where TDef : DefPlayer, new()
     {
@@ -29,9 +29,9 @@ namespace Ps
         {
             EbLog.Note("ClientPlayer.init() EntityGuid=" + Entity.Guid);
 
-            defNodeRpcMethod<PlayerResponse>(
+            DefaultRpcSession.defRpcMethod<PlayerResponse>(
                 (ushort)MethodType.s2cPlayerResponse, s2cPlayerResponse);
-            defNodeRpcMethod<PlayerNotify>(
+            DefaultRpcSession.defRpcMethod<PlayerNotify>(
                 (ushort)MethodType.s2cPlayerNotify, s2cPlayerNotify);
 
             EntityMgr.getDefaultEventPublisher().addHandler(Entity);
@@ -495,7 +495,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.EnterDesktop;
             player_request.data = EbTool.protobufSerialize(desktop_etguid);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -505,7 +505,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.EnterDesktopAny;
             player_request.data = null;
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -515,7 +515,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.CreatePrivateDesktop;
             player_request.data = EbTool.protobufSerialize(desktop_createinfo);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -525,7 +525,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.LeaveDesktop;
             player_request.data = null;
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -535,7 +535,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.GetOnlinePlayerNum;
             player_request.data = null;
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -552,7 +552,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.DevConsoleCmd;
             player_request.data = EbTool.protobufSerialize<Dictionary<byte, string>>(map_param);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -569,7 +569,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.DevConsoleCmd;
             player_request.data = EbTool.protobufSerialize<Dictionary<byte, string>>(map_param);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -586,7 +586,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.DevConsoleCmd;
             player_request.data = EbTool.protobufSerialize<Dictionary<byte, string>>(map_param);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -596,7 +596,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.GetPlayerInfoOther;
             player_request.data = EbTool.protobufSerialize<string>(et_player_guid);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -606,7 +606,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.ChangeProfileSkin;
             player_request.data = EbTool.protobufSerialize<int>(profileskin_tableid);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -616,7 +616,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.ChangeNickName;
             player_request.data = EbTool.protobufSerialize<string>(nick_name);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -626,7 +626,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.ChangeIndividualSignature;
             player_request.data = EbTool.protobufSerialize<string>(sign);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -636,7 +636,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.RefreshIpAddress;
             player_request.data = null;
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -650,7 +650,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.ReportPlayer;
             player_request.data = EbTool.protobufSerialize<ReportPlayer>(report);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -672,7 +672,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.InvitePlayerEnterDesktop;
             player_request.data = EbTool.protobufSerialize<InvitePlayerEnterDesktop>(invite);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -689,7 +689,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.GivePlayerChip;
             player_request.data = EbTool.protobufSerialize<GivePlayerChip>(give_chip);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -698,7 +698,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.SetVip4Test;
             player_request.data = EbTool.protobufSerialize<bool>(is_vip);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -710,7 +710,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.SetAFK;
             player_request.data = EbTool.protobufSerialize<bool>(!afk);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------
@@ -719,7 +719,7 @@ namespace Ps
             PlayerRequest player_request;
             player_request.id = PlayerRequestId.SetAFK;
             player_request.data = EbTool.protobufSerialize<bool>(afk);
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_request);
         }
 
         //-------------------------------------------------------------------------

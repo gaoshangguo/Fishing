@@ -253,7 +253,8 @@ paket-files/
 # Unity3D
 /Client/Library/
 /Client/Temp/
-/Client/Client.CSharp.Editor.csproj
-/Client/CSharp.Plugins.csproj
 /Client/Client.CSharp.csproj
+/Client/Client.CSharp.Editor.csproj
+/Client/Client.CSharp.Editor.Plugins.csproj
+/Client/Client.CSharp.Plugins.csproj
 /Client/Client.sln

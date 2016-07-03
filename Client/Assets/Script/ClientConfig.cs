@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
 public class ClientConfig
 {

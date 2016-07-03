@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GF.Common;
-using Ps;
+using GF.Unity.Common;
+using Fishing;
 
 //-----------------------------------------------------------------------------
 // Entity消息，FixedUpdate

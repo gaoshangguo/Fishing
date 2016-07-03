@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Ps;
 
-public class TestParticle : MonoBehaviour
+namespace Fishing
 {
-    ParticleSystem mParticleSystem = null;
-    // Use this for initialization
-    void Start()
+    public class TestParticle : MonoBehaviour
     {
-        mParticleSystem = GetComponent<ParticleSystem>();
-        Debug.LogWarning(mParticleSystem.duration);
-        
-    }
+        ParticleSystem mParticleSystem = null;
+        // Use this for initialization
+        void Start()
+        {
+            mParticleSystem = GetComponent<ParticleSystem>();
+            Debug.LogWarning(mParticleSystem.duration);
 
-    // Update is called once per frame
-    void Update()
-    {
+        }
 
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

@@ -1,68 +1,70 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using GF.Common;
+using GF.Unity.Common;
 using UnityEngine;
-using Ps;
 
-public class LevelSeaStarMgr
+namespace Fishing
 {
-    //-------------------------------------------------------------------------
-    CRenderScene mScene = null;
-    List<StillParticle> mSeaStar = new List<StillParticle>();
-
-    //-------------------------------------------------------------------------
-    public LevelSeaStarMgr(CRenderScene render_scene)
+    public class LevelSeaStarMgr
     {
-        mScene = render_scene;
-    }
+        //-------------------------------------------------------------------------
+        CRenderScene mScene = null;
+        List<StillParticle> mSeaStar = new List<StillParticle>();
 
-    //-------------------------------------------------------------------------
-    public void switchBackground(int map_id)
-    {
-        _destroySeaStar();
-        _loadSeaStar(map_id);
-    }
-
-    //-------------------------------------------------------------------------
-    public void destroy()
-    {
-        _destroySeaStar();
-    }
-
-    //-------------------------------------------------------------------------
-    void _destroySeaStar()
-    {
-        foreach (var it in mSeaStar)
+        //-------------------------------------------------------------------------
+        public LevelSeaStarMgr(CRenderScene render_scene)
         {
-            mScene.getParticlemanager().freeParticle(it);
+            mScene = render_scene;
         }
-        mSeaStar.Clear();
-    }
 
-    //-------------------------------------------------------------------------
-    void _loadSeaStar(int map_id)
-    {
-        TbDataMap data = EbDataMgr.Instance.getData<TbDataMap>(map_id);
-        foreach (var it in data.SeaStarParticle)
+        //-------------------------------------------------------------------------
+        public void switchBackground(int map_id)
         {
-            try
+            _destroySeaStar();
+            _loadSeaStar(map_id);
+        }
+
+        //-------------------------------------------------------------------------
+        public void destroy()
+        {
+            _destroySeaStar();
+        }
+
+        //-------------------------------------------------------------------------
+        void _destroySeaStar()
+        {
+            foreach (var it in mSeaStar)
             {
-                if (it.TbDataParticle == null || it.TbDataParticle.Id == 0) continue;
+                mScene.getParticlemanager().freeParticle(it);
+            }
+            mSeaStar.Clear();
+        }
 
-                StillParticle still_particle = mScene.getParticlemanager().newParticle(it.TbDataParticle.ParticlePrefabName);
-                still_particle.setPosition(new EbVector3(it.PositionX, it.PositionY, 0));
-                still_particle.setLayer(mScene.getLayerAlloter().getLayer(_eLevelLayer.StarFish));
+        //-------------------------------------------------------------------------
+        void _loadSeaStar(int map_id)
+        {
+            TbDataMap data = EbDataMgr.Instance.getData<TbDataMap>(map_id);
+            foreach (var it in data.SeaStarParticle)
+            {
+                try
+                {
+                    if (it.TbDataParticle == null || it.TbDataParticle.Id == 0) continue;
 
-                mSeaStar.Add(still_particle);
+                    StillParticle still_particle = mScene.getParticlemanager().newParticle(it.TbDataParticle.ParticlePrefabName);
+                    still_particle.setPosition(new EbVector3(it.PositionX, it.PositionY, 0));
+                    still_particle.setLayer(mScene.getLayerAlloter().getLayer(_eLevelLayer.StarFish));
+
+                    mSeaStar.Add(still_particle);
 
 #if UNITY_EDITOR
-                still_particle.gameObject.name = "TkSpriteSeaStar_" + it.TbDataParticle.ParticlePrefabName;
+                    still_particle.gameObject.name = "TkSpriteSeaStar_" + it.TbDataParticle.ParticlePrefabName;
 #endif
-            }
-            catch (Exception e)
-            {
-                Debug.LogWarning(e);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogWarning(e);
+                }
             }
         }
     }

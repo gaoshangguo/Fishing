@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Ps;
 
-public class ParticleSilverCoins : ParticleRippleCoins
+namespace Fishing
 {
-    protected override string getPrefabName()
+    public class ParticleSilverCoins : ParticleRippleCoins
     {
-        return "EXyinbi";
+        protected override string getPrefabName()
+        {
+            return "EXyinbi";
+        }
     }
 }

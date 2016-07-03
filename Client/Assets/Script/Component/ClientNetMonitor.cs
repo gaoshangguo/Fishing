@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientNetMonitor<TDef> : Component<TDef> where TDef : DefNetMonitor, new()
     {
         //-------------------------------------------------------------------------
-        EntityRpcSessionSuperSocketC mSession;
+        //EntityRpcSessionSuperSocketC mSession;
         const float mReconnectTmSpan = 5f;
         float mReconnectTm = 0f;
         EcPing mClientPing = new EcPing();
 
         //-------------------------------------------------------------------------
         public ClientApp<DefApp> CoApp { get; private set; }
-        public IRpcSession Session { get { return mSession; } }
+        //public IRpcSession Session { get { return mSession; } }
         public EcPing ClientPing { get { return mClientPing; } }
         public string AccId { get; set; }
         public string Acc { get; set; }
@@ -30,9 +30,9 @@ namespace Ps
         {
             EbLog.Note("ClientNetMonitor.init()");
 
-            defNodeRpcMethod<AccountResponse>(
-                (ushort)MethodType.s2cAccountResponse, s2cAccountResponse);
-            defNodeRpcMethod<AccountNotify>(
+            DefaultRpcSession.defRpcMethod<AccountResponse>(
+                 (ushort)MethodType.s2cAccountResponse, s2cAccountResponse);
+            DefaultRpcSession.defRpcMethod<AccountNotify>(
                 (ushort)MethodType.s2cAccountNotify, s2cAccountNotify);
 
             Entity et_app = EntityMgr.findFirstEntityByType<EtApp>();
@@ -56,36 +56,36 @@ namespace Ps
         //-------------------------------------------------------------------------
         public override void update(float elapsed_tm)
         {
-            if (mSession != null)
-            {
-                mSession.update(elapsed_tm);
-            }
+            //if (mSession != null)
+            //{
+            //    mSession.update(elapsed_tm);
+            //}
 
-            if (mSession != null)
-            {
-                mClientPing.update(elapsed_tm);
-            }
+            //if (mSession != null)
+            //{
+            //    mClientPing.update(elapsed_tm);
+            //}
 
             // 断线重连判定
-            if (mSession == null && !string.IsNullOrEmpty(Token))
-            {
-                mReconnectTm += elapsed_tm;
-                //UiMbMessageBox ui_msgbox = UiMgr.Instance.getCurrentUi<UiMbMessageBox>();
-                //if (ui_msgbox == null) ui_msgbox = UiMgr.Instance.createUi<UiMbMessageBox>(_eUiLayer.MessgeBox);
-                if (mReconnectTm > mReconnectTmSpan)
-                {
-                    mReconnectTm = 0f;
-                    //_connectBase();
-                    //ui_msgbox.showMessageLable("断线重连中！", null, null, _disconnection, true, "返回登录");
-                }
-                else
-                {
-                    float tm_span = mReconnectTmSpan - mReconnectTm;
-                    if (tm_span < 0f) tm_span = 0f;
-                    //string info = string.Format("已断线，{0}秒后进行重连！", (int)(tm_span + 1));
-                    //ui_msgbox.showMessageLable(info, null, null, _disconnection, true, "返回登录");
-                }
-            }
+            //if (mSession == null && !string.IsNullOrEmpty(Token))
+            //{
+            //    mReconnectTm += elapsed_tm;
+            //    //UiMbMessageBox ui_msgbox = UiMgr.Instance.getCurrentUi<UiMbMessageBox>();
+            //    //if (ui_msgbox == null) ui_msgbox = UiMgr.Instance.createUi<UiMbMessageBox>(_eUiLayer.MessgeBox);
+            //    if (mReconnectTm > mReconnectTmSpan)
+            //    {
+            //        mReconnectTm = 0f;
+            //        //_connectBase();
+            //        //ui_msgbox.showMessageLable("断线重连中！", null, null, _disconnection, true, "返回登录");
+            //    }
+            //    else
+            //    {
+            //        float tm_span = mReconnectTmSpan - mReconnectTm;
+            //        if (tm_span < 0f) tm_span = 0f;
+            //        //string info = string.Format("已断线，{0}秒后进行重连！", (int)(tm_span + 1));
+            //        //ui_msgbox.showMessageLable(info, null, null, _disconnection, true, "返回登录");
+            //    }
+            //}
         }
 
         //-------------------------------------------------------------------------
@@ -96,20 +96,20 @@ namespace Ps
         //-------------------------------------------------------------------------
         public void connectBase(string base_ip, int base_port)
         {
-            if (mSession != null)
-            {
-                mSession.close();
-                mSession = null;
-            }
+            //if (mSession != null)
+            //{
+            //    mSession.close();
+            //    mSession = null;
+            //}
 
-            BaseIp = base_ip;
-            BasePort = base_port;
+            //BaseIp = base_ip;
+            //BasePort = base_port;
 
-            mSession = new EntityRpcSessionSuperSocketC(EntityMgr);
-            mSession.OnSocketConnected = _onSocketConnected;
-            mSession.OnSocketClosed = _onSocketClosed;
-            mSession.OnSocketError = _onSocketError;
-            mSession.connect(BaseIp, BasePort);
+            //mSession = new EntityRpcSessionSuperSocketC(EntityMgr);
+            //mSession.OnSocketConnected = _onSocketConnected;
+            //mSession.OnSocketClosed = _onSocketClosed;
+            //mSession.OnSocketError = _onSocketError;
+            //mSession.connect(BaseIp, BasePort);
 
             //FloatMsgInfo f_info;
             //f_info.msg = "请求进入游戏世界";
@@ -122,13 +122,13 @@ namespace Ps
         {
             EbLog.Note("ClientNetMonitor.disconnect()");
 
-            mClientPing.stop();
+            //mClientPing.stop();
 
-            if (mSession != null)
-            {
-                mSession.close();
-                mSession = null;
-            }
+            //if (mSession != null)
+            //{
+            //    mSession.close();
+            //    mSession = null;
+            //}
 
             AccId = "";
             Token = "";
@@ -219,7 +219,7 @@ namespace Ps
             AccountRequest account_request;
             account_request.id = AccountRequestId.EnterWorld;
             account_request.data = EbTool.protobufSerialize(enterworld_request);
-            CoApp.rpc(MethodType.c2sAccountRequest, account_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sAccountRequest, account_request);
 
             mClientPing.start(BaseIp);
         }
@@ -250,9 +250,9 @@ namespace Ps
         {
             //UiMgr.Instance.destroyCurrentUi<UiMbWaiting>();
 
-            mSession = null;
+            //mSession = null;
 
-            mClientPing.stop();
+            //mClientPing.stop();
 
             // 销毁玩家
             Entity et_player = EntityMgr.findFirstEntityByType<EtPlayer>();

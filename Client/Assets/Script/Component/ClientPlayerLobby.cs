@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientPlayerLobby<TDef> : Component<TDef> where TDef : DefPlayerLobby, new()
     {
@@ -24,9 +24,9 @@ namespace Ps
             CoPlayer = Entity.getComponent<ClientPlayer<DefPlayer>>();
             InLobby = false;
 
-            defNodeRpcMethod<PlayerLobbyResponse>(
+            DefaultRpcSession.defRpcMethod<PlayerLobbyResponse>(
                 (ushort)MethodType.s2cPlayerLobbyResponse, s2cPlayerLobbyResponse);
-            defNodeRpcMethod<PlayerLobbyNotify>(
+            DefaultRpcSession.defRpcMethod<PlayerLobbyNotify>(
                 (ushort)MethodType.s2cPlayerLobbyNotify, s2cPlayerLobbyNotify);
         }
 
@@ -93,7 +93,7 @@ namespace Ps
             lobby_request.id = PlayerLobbyRequestId.SearchDesktop;
             lobby_request.data = EbTool.protobufSerialize(search_filter);
 
-            CoApp.rpc(MethodType.c2sPlayerLobbyRequest, lobby_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerLobbyRequest, lobby_request);
         }
 
         //-------------------------------------------------------------------------
@@ -106,7 +106,7 @@ namespace Ps
             lobby_request.id = PlayerLobbyRequestId.SearchDesktopFollowFriend;
             lobby_request.data = EbTool.protobufSerialize(desktop_etguid);
 
-            CoApp.rpc(MethodType.c2sPlayerLobbyRequest, lobby_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerLobbyRequest, lobby_request);
         }
 
         //-------------------------------------------------------------------------

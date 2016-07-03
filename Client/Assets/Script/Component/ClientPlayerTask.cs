@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientPlayerTask<TDef> : Component<TDef> where TDef : DefPlayerTask, new()
     {
@@ -18,9 +18,9 @@ namespace Ps
         {
             EbLog.Note("ClientPlayerTask.init()");
 
-            defNodeRpcMethod<PlayerTaskResponse>(
+            DefaultRpcSession.defRpcMethod<PlayerTaskResponse>(
                 (ushort)MethodType.s2cPlayerTaskResponse, s2cPlayerTaskResponse);
-            defNodeRpcMethod<PlayerTaskNotify>(
+            DefaultRpcSession.defRpcMethod<PlayerTaskNotify>(
                 (ushort)MethodType.s2cPlayerTaskNotify, s2cPlayerTaskNotify);
 
             Entity et_app = EntityMgr.findFirstEntityByType<EtApp>();
@@ -188,7 +188,7 @@ namespace Ps
             playertask_request.id = PlayerTaskRequestId.SetupTask;
             playertask_request.data = null;
 
-            CoApp.rpc(MethodType.c2sPlayerTaskRequest, playertask_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerTaskRequest, playertask_request);
         }
 
         //-------------------------------------------------------------------------
@@ -199,7 +199,7 @@ namespace Ps
             playertask_request.id = PlayerTaskRequestId.TaskAccept;
             playertask_request.data = EbTool.protobufSerialize<int>(task_id);
 
-            CoApp.rpc(MethodType.c2sPlayerTaskRequest, playertask_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerTaskRequest, playertask_request);
         }
 
         //-------------------------------------------------------------------------
@@ -210,7 +210,7 @@ namespace Ps
             playertask_request.id = PlayerTaskRequestId.TaskExcute;
             playertask_request.data = EbTool.protobufSerialize<int>(task_id);
 
-            CoApp.rpc(MethodType.c2sPlayerTaskRequest, playertask_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerTaskRequest, playertask_request);
         }
 
         //-------------------------------------------------------------------------
@@ -223,7 +223,7 @@ namespace Ps
             playertask_request.id = PlayerTaskRequestId.TaskFinish;
             playertask_request.data = EbTool.protobufSerialize<int>(task_id);
 
-            CoApp.rpc(MethodType.c2sPlayerTaskRequest, playertask_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerTaskRequest, playertask_request);
         }
 
         //-------------------------------------------------------------------------
@@ -234,7 +234,7 @@ namespace Ps
             playertask_request.id = PlayerTaskRequestId.TaskGiveUp;
             playertask_request.data = EbTool.protobufSerialize<int>(task_id);
 
-            CoApp.rpc(MethodType.c2sPlayerTaskRequest, playertask_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerTaskRequest, playertask_request);
         }
 
         //-------------------------------------------------------------------------

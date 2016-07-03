@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class EtLaunch : EntityDef
     {

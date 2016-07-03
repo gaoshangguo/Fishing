@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientPlayerFriend<TDef> : Component<TDef> where TDef : DefPlayerFriend, new()
     {
@@ -19,9 +19,9 @@ namespace Ps
         //-------------------------------------------------------------------------
         public override void init()
         {
-            defNodeRpcMethod<PlayerFriendResponse>(
+            DefaultRpcSession.defRpcMethod<PlayerFriendResponse>(
                 (ushort)MethodType.s2cPlayerFriendResponse, s2cPlayerFriendResponse);
-            defNodeRpcMethod<PlayerFriendNotify>(
+            DefaultRpcSession.defRpcMethod<PlayerFriendNotify>(
                 (ushort)MethodType.s2cPlayerFriendNotify, s2cPlayerFriendNotify);
 
             Entity et_app = EntityMgr.findFirstEntityByType<EtApp>();
@@ -224,7 +224,7 @@ namespace Ps
             playerfriend_request.id = PlayerFriendRequestId.GetPlayerInfoFriend;
             playerfriend_request.data = EbTool.protobufSerialize<string>(player_etguid);
 
-            CoApp.rpc(MethodType.c2sPlayerRequest, player_etguid);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerRequest, player_etguid);
         }
 
         //-------------------------------------------------------------------------
@@ -235,7 +235,7 @@ namespace Ps
             playerfriend_request.id = PlayerFriendRequestId.RequestAddFriend;
             playerfriend_request.data = EbTool.protobufSerialize<string>(player_etguid);
 
-            CoApp.rpc(MethodType.c2sPlayerFriendRequest, playerfriend_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerFriendRequest, playerfriend_request);
         }
 
         //-------------------------------------------------------------------------
@@ -250,7 +250,7 @@ namespace Ps
             playerfriend_request.id = PlayerFriendRequestId.AgreeAddFriend;
             playerfriend_request.data = EbTool.protobufSerialize<AddFriendAgree>(addfriend_agree);
 
-            CoApp.rpc(MethodType.c2sPlayerFriendRequest, playerfriend_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerFriendRequest, playerfriend_request);
         }
 
         //-------------------------------------------------------------------------
@@ -261,7 +261,7 @@ namespace Ps
             playerfriend_request.id = PlayerFriendRequestId.DeleteFriend;
             playerfriend_request.data = EbTool.protobufSerialize<string>(et_player_guid);
 
-            CoApp.rpc(MethodType.c2sPlayerFriendRequest, playerfriend_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerFriendRequest, playerfriend_request);
         }
 
         //-------------------------------------------------------------------------
@@ -272,7 +272,7 @@ namespace Ps
             playerfriend_request.id = PlayerFriendRequestId.FindFriend;
             playerfriend_request.data = EbTool.protobufSerialize<string>(find_info);
 
-            CoApp.rpc(MethodType.c2sPlayerFriendRequest, playerfriend_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerFriendRequest, playerfriend_request);
         }
 
         //-------------------------------------------------------------------------

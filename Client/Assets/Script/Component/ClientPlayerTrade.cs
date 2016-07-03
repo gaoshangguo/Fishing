@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientPlayerTrade<TDef> : Component<TDef> where TDef : DefPlayerTrade, new()
     {
@@ -17,9 +17,9 @@ namespace Ps
         {
             EbLog.Note("ClientPlayerTrade.init()");
 
-            defNodeRpcMethod<PlayerTradeResponse>(
+            DefaultRpcSession.defRpcMethod<PlayerTradeResponse>(
                 (ushort)MethodType.s2cPlayerTradeResponse, s2cPlayerTradeResponse);
-            defNodeRpcMethod<PlayerTradeNotify>(
+            DefaultRpcSession.defRpcMethod<PlayerTradeNotify>(
                 (ushort)MethodType.s2cPlayerTradeNotify, s2cPlayerTradeNotify);
 
             Entity et_app = EntityMgr.findFirstEntityByType<EtApp>();

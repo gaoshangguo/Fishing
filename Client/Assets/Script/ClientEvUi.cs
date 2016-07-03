@@ -2,17 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GF.Common;
-using GF.UCenter.Common.Portable.Models.AppClient;
-using Ps;
+using GF.Unity.Common;
+//using GF.UCenter.Common.Portable.Models.AppClient;
+using Fishing;
 
 //-----------------------------------------------------------------------------
 //ui消息，点击登录界面注册账号按钮
-public class EvUiLoginRegisterAccount : EntityEvent
-{
-    public EvUiLoginRegisterAccount() : base() { }
-    public AccountRegisterInfo register_acc_data = new AccountRegisterInfo();
-}
+//public class EvUiLoginRegisterAccount : EntityEvent
+//{
+//    public EvUiLoginRegisterAccount() : base() { }
+//    public AccountRegisterInfo register_acc_data = new AccountRegisterInfo();
+//}
 
 //-----------------------------------------------------------------------------
 //ui消息，点击登录界面删除游客账号

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using GF.Common;
-using Ps;
+using GF.Unity.Common;
+using Fishing;
 
 public class EcEngineListener : IEcEngineListener
 {
@@ -32,7 +32,7 @@ public class EcEngineListener : IEcEngineListener
         entity_mgr.regComponent<ClientStatus<DefStatus>>();
         entity_mgr.regComponent<ClientStatusMirror<DefStatusMirror>>();
         entity_mgr.regComponent<ClientSysNotice<DefSysNotice>>();
-        entity_mgr.regComponent<ClientUCenterSDK<DefUCenterSDK>>();
+        //entity_mgr.regComponent<ClientUCenterSDK<DefUCenterSDK>>();
 
         entity_mgr.regEntityDef<EtApp>();
         entity_mgr.regEntityDef<EtFishing>();
@@ -40,7 +40,7 @@ public class EcEngineListener : IEcEngineListener
         entity_mgr.regEntityDef<EtLogin>();
         entity_mgr.regEntityDef<EtPlayer>();
         entity_mgr.regEntityDef<EtPlayerMirror>();
-        entity_mgr.regEntityDef<EtUCenterSDK>();
+        //entity_mgr.regEntityDef<EtUCenterSDK>();
     }
 
     //-------------------------------------------------------------------------
@@ -121,7 +121,6 @@ public class MbMain : MonoBehaviour
             EcEngineSettings settings;
             settings.ProjectName = "Fishing";
             settings.RootEntityType = "EtRoot";
-            settings.EnableCoSuperSocket = true;
             mEngine = new EcEngine(ref settings, new EcEngineListener());
         }
 

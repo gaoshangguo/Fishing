@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class CRenderFishFactory : BaseEntityFactory
     {

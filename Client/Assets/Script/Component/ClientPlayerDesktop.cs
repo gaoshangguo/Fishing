@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public enum PlayerOperateType
     {
@@ -122,9 +122,9 @@ namespace Ps
         {
             EbLog.Note("ClientPlayerDesktop.init()");
 
-            defNodeRpcMethod<DesktopResponse>(
+            DefaultRpcSession.defRpcMethod<DesktopResponse>(
                 (ushort)MethodType.s2cPlayerDesktopResponse, s2cPlayerDesktopResponse);
-            defNodeRpcMethod<DesktopNotify>(
+            DefaultRpcSession.defRpcMethod<DesktopNotify>(
                 (ushort)MethodType.s2cPlayerDesktopNotify, s2cPlayerDesktopNotify);
 
             Entity et_app = EntityMgr.findFirstEntityByType<EtApp>();
@@ -221,7 +221,7 @@ namespace Ps
             DesktopRequest desktop_request;
             desktop_request.id = DesktopRequestId.PlayerWaitWhile;
             desktop_request.data = null;
-            CoApp.rpc(MethodType.c2sPlayerDesktopRequest, desktop_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerDesktopRequest, desktop_request);
         }
 
         //-------------------------------------------------------------------------
@@ -231,7 +231,7 @@ namespace Ps
             DesktopRequest desktop_request;
             desktop_request.id = DesktopRequestId.PlayerReturn;
             desktop_request.data = null;
-            CoApp.rpc(MethodType.c2sPlayerDesktopRequest, desktop_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerDesktopRequest, desktop_request);
         }
 
         //-------------------------------------------------------------------------
@@ -242,7 +242,7 @@ namespace Ps
             DesktopRequest desktop_request;
             desktop_request.id = DesktopRequestId.PlayerOb;
             desktop_request.data = null;
-            CoApp.rpc(MethodType.c2sPlayerDesktopRequest, desktop_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerDesktopRequest, desktop_request);
         }
 
         //-------------------------------------------------------------------------
@@ -252,7 +252,7 @@ namespace Ps
             DesktopRequest desktop_request;
             desktop_request.id = DesktopRequestId.PlayerSitdown;
             desktop_request.data = EbTool.protobufSerialize<byte>(seat_index);
-            CoApp.rpc(MethodType.c2sPlayerDesktopRequest, desktop_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerDesktopRequest, desktop_request);
         }
 
         //-------------------------------------------------------------------------
@@ -261,7 +261,7 @@ namespace Ps
             DesktopRequest desktop_request;
             desktop_request.id = DesktopRequestId.PlayerSceneAction;
             desktop_request.data = EbTool.protobufSerialize(vec_param);
-            CoApp.rpc(MethodType.c2sPlayerDesktopRequest, desktop_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sPlayerDesktopRequest, desktop_request);
         }
 
         //-------------------------------------------------------------------------

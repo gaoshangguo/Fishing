@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using GF.Common;
+using GF.Unity.Common;
 
-namespace Ps
+namespace Fishing
 {
     public class ClientStatus<TDef> : Component<TDef> where TDef : DefStatus, new()
     {
@@ -19,9 +19,9 @@ namespace Ps
         //-------------------------------------------------------------------------
         public override void init()
         {
-            defNodeRpcMethod<StatusResponse>(
+            DefaultRpcSession.defRpcMethod<StatusResponse>(
                 (ushort)MethodType.s2cStatusResponse, s2cStatusResponse);
-            defNodeRpcMethod<StatusNotify>(
+            DefaultRpcSession.defRpcMethod<StatusNotify>(
                 (ushort)MethodType.s2cStatusNotify, s2cStatusNotify);
 
             Entity et_app = EntityMgr.findFirstEntityByType<EtApp>();
@@ -154,7 +154,7 @@ namespace Ps
             status_request.id = StatusRequestId.SetupStatus;
             status_request.data = null;
 
-            CoApp.rpc(MethodType.c2sStatusRequest, status_request);
+            DefaultRpcSession.rpc((ushort)MethodType.c2sStatusRequest, status_request);
         }
     }
 }
