@@ -14,7 +14,7 @@ namespace Fishing
         public static string getPathMediaRoot()
         {
             string file_name = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
-            string p1 = Path.Combine(file_name, "..\\..\\..\\..\\Media\\");
+            string p1 = Path.Combine(file_name, "..\\..\\..\\Media\\");
             string p2 = Path.GetFullPath(p1);
             return p2;
         }
